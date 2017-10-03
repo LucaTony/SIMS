@@ -7,8 +7,8 @@ import (
 	"github.com/spf13/viper"
 	"net/http"
 
-	"github.com/LucaTony/GoTest/handlers"
-	"github.com/LucaTony/GoTest/middlewares"
+	"github.com/LucaTony/SIMS/handlers"
+	"github.com/LucaTony/SIMS/middlewares"
 )
 
 // New is the constructor for Application struct.

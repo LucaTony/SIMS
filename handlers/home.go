@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/LucaTony/GoTest/libhttp"
+	"github.com/LucaTony/SIMS/libhttp"
 	"html/template"
 	"net/http"
 )

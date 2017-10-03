@@ -4,7 +4,7 @@
 
 2. Run the server
     ```
-    cd $GOPATH/src/github.com/LucaTony/GoTest
+    cd $GOPATH/src/github.com/LucaTony/SIMS
     go run main.go
     ```
 
