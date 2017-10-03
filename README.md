@@ -1,6 +1,6 @@
 ## Installation
 
-Luca vc test
+Luca vc test 2
 
 1. Install Go 1.4.x or greater, git, setup `$GOPATH`, and `PATH=$PATH:$GOPATH/bin`
 
