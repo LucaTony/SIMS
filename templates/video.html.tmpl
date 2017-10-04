@@ -1,10 +1,12 @@
-
-
+{{define "video"}}
+<h1>Videooo</h1>
 <div class="greeting">
 <h1>Welcome to the future</h1>
   <p>Here we will write one or two rows that explains i a big picture the webpage</p>
   <div class="video" width="800px" height="800px">
     <p>Here we will put the short video, that will play in the background(click on it to mute or unmute)</p>
-    <embed src="https://www.youtube.com/embed/F9Bo89m2f6g" allowfullscreen="true" width="425" height="344">
+    <!-- <embed src="https://www.youtube.com/embed/F9Bo89m2f6g" allowfullscreen="true" width="425" height="344"> -->
   </div>
 </div>
+{{template "model" .}}
+{{end}}
