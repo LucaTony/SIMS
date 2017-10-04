@@ -9,7 +9,7 @@ import (
 func GetHome(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 
-	tmpl, err := template.ParseFiles("templates/dashboard.html.tmpl", "templates/home.html.tmpl")
+	tmpl, err := template.ParseFiles("templates/dashboard.html.tmpl", "templates/video.html.tmpl", "templates/model.html.tmpl", "templates/calculator.html.tmpl", "templates/eu.html.tmpl", "templates/footer.html.tmpl")
 	if err != nil {
 		libhttp.HandleErrorJson(w, err)
 		return
