@@ -1,14 +1,30 @@
 {{define "video"}}
 
-<div class="greeting">
-<h1>Welcome to the future</h1>
-  <p>Here we will write one or two rows that explains i a big picture the webpage</p>
-  <div class="video" width="800px" height="800px">
-    <p>Here we will put the short video, that will play in the background(click on it to mute or unmute)</p>
-    <!-- <embed src="https://www.youtube.com/embed/F9Bo89m2f6g" allowfullscreen="true" width="425" height="344"> -->
-      <h1>Video</h1>
-      <img src="img/ph.png" alt="">
+<section class="bg-primary" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1>Welcome to the future</h1>
+          <hr class="light">
+          <p>Here we will write one or two rows that explains i a big picture the webpage</p>
+          <div class="video">
+            <p>Here we will put the short video, that will play in the background(click on it to mute or unmute)</p>
+            <embed src="https://www.youtube.com/embed/F9Bo89m2f6g" allowfullscreen="true" width="700" height="500">
+             <!--<h1>Video</h1>
+              <img src="img/ph.png" alt=""> --> 
+       </div>      
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--<section class="bg-primary" id="about"></section>
+<div class="container">
+ <div lass="collapse navbar-collapse" id="navbarResponsive">
+    
   </div>
 </div>
+</section>-->
+
 {{template "model" .}}
 {{end}}
