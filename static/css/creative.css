@@ -30,6 +30,19 @@ a {
 .col-lg-12.green{
   background-color: #98F0BA;
 }
+.col-lg-12.blue{
+  background-color: blue;
+}
+.col-lg-12.purple{
+  background-color: purple;
+}
+.col-lg-12.orange{
+  background-color: orange;
+}
+.col-lg-12.pink{
+  background-color: pink;
+}
+
 
 h1,
 h2,
