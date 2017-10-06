@@ -115,7 +115,7 @@ body {
     color: #222222; }
   #mainNav .navbar-nav > li.nav-item > a.nav-link:focus,
   #mainNav .navbar-nav > li.nav-item > a.nav-link {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
     color: #222222; }
@@ -142,7 +142,7 @@ body {
         color: rgba(0, 0, 0, 0.7); }
         #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
         #mainNav .navbar-nav > li.nav-item > a.nav-link:focus:hover {
-          color: white; }
+          color: #8BC34A; }
       #mainNav.navbar-shrink {
         border-color: rgba(34, 34, 34, 0.05);
         background-color: white; }
