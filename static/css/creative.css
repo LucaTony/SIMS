@@ -29,6 +29,8 @@ a {
 
 .col-lg-12.green{
   background-color: #DCEDC8;
+  box-shadow: 10px 10px 5px #505050;
+  border-radius: 7px;
 }
 .col-lg-12.blue{
   background-color: blue;
@@ -43,6 +45,12 @@ a {
   background-color: pink;
 }
 
+.sticky-left{
+  position: sticky;
+  top: 100px;
+  width: 100px;
+  background-color: gray;
+}
 
 h1,
 h2,
