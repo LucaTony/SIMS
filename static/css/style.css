@@ -9,9 +9,9 @@ hr {
 }
 section {
   padding: 40px 0; }
-img{
-  width: 100%;
-  height: auto;
+.temp{
+  width: 80%;
+  height: 80%;
 }
 .col-lg-12.green{
   background-color: #DCEDC8;
