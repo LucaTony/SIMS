@@ -8,10 +8,10 @@ hr {
   padding-block-start: 80px;
 }
 section {
-  padding: 40px 0; }
+  padding: 70px 0; }
 .temp{
-  width: 80%;
-  height: 80%;
+  max-width: 80%;
+  max-height: 80%;
 }
 .col-lg-12.green{
   background-color: #DCEDC8;
