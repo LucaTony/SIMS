@@ -4,11 +4,15 @@
 
 hr {
   border-color: #33691E; }
-
+.row{
+  padding-block-start: 80px;
+}
 section {
-  padding: 50px 0; }
-
-
+  padding: 40px 0; }
+img{
+  width: 100%;
+  height: auto;
+}
 .col-lg-12.green{
   background-color: #DCEDC8;
   box-shadow: 5px 5px 15px #505050;
