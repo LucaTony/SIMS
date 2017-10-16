@@ -5,8 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/LucaTony/SIMS"
-	"github.com/utronframework/chat/controllers"
+	"github.com/gernest/utron"
+	c "github.com/utronframework/todo/controllers"
+	"github.com/utronframework/todo/models"
 )
 
 func main() {
@@ -17,10 +18,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Register Controllers
-	app.AddController(controllers.NewApp)
-	app.AddController(controllers.NewWebsocket)
-	app.AddController(controllers.NewRefresh)
+	// Register Models
+	app.Model.Register(&models.Todo{})
+
+	// CReate Models tables if they dont exist yet
+	app.Model.AutoMigrateAll()
+
+	// Register Controller
+	app.AddController(c.NewTodo)
 
 	// Start the server
 	port := fmt.Sprintf(":%d", app.Config.Port)

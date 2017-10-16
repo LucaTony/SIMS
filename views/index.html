@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Utron Todo MVC</title>
+	<link href="/static/todo.css" rel="stylesheet">
+</head>
+<body>
+	<section class="todoapp">
+		<header class="header">
+			<h1> utron todos</h1>
+
+			<form method="post" action="/create">
+				<input class="new-todo"  name="body" placeholder="What needs to be done?" autofocus>
+			</form>
+		</header>
+		<!-- This section should be hidden by default and shown when there are todos -->
+		<section class="main">
+			<input class="toggle-all" type="checkbox">
+			<label for="toggle-all">Mark all as complete</label>
+			<ul class="todo-list">
+				{{range $k,$v:=.List}}
+				<li>
+					<div class="view">
+						<input class="toggle" type="checkbox">
+						<label>{{$v.Body}}</label>
+						<a href="/delete/{{$v.ID}}">
+						<button class="destroy"></button>
+						</a>
+					</div>
+				</li>
+				{{end}}
+			</ul>
+		</section>
+	</section>
+</body>
+</html>
