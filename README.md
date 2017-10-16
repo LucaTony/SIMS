@@ -1,53 +1,81 @@
+![utron logo](utron.png)
+
+# utron
+[![GoDoc](https://godoc.org/github.com/gernest/utron?status.svg)](https://godoc.org/github.com/gernest/utron) [![Coverage Status](https://coveralls.io/repos/gernest/utron/badge.svg?branch=master&service=github)](https://coveralls.io/github/gernest/utron?branch=master) [![Build Status](https://travis-ci.org/gernest/utron.svg)](https://travis-ci.org/gernest/utron) [![Join the chat at https://gitter.im/gernest/utron](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gernest/utron?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Go Report Card](https://goreportcard.com/badge/github.com/gernest/utron)](https://goreportcard.com/report/github.com/gernest/utron)
+
+
+`utron` is a lightweight MVC framework in Go ([Golang](https://golang.org)) for building fast, scalable and robust database-driven web applications.
+
+# Features
+* [x] Postgres, MySQL, SQLite and Foundation database support
+* [x] Modular (you can choose which components to use)
+* [x] Middleware support. All [alice](https://github.com/justinas/alice) compatible Middleware works out of the box
+* [x] Gopher spirit (write golang, use all the golang libraries you like)
+* [x] Lightweight. Only MVC
+* [x] Multiple configuration files support (currently json, yaml, toml and hcl)
+
+
+
+# Overview
+`utron` is a lightweight MVC framework. It is based on the principles of simplicity, relevance and elegance.
+
+* Simplicity. The design is simple, easy to understand and doesn't introduce many layers between you and the standard library. It is a goal of the project that users should be able to understand the whole framework in a single day.
+
+* Relevance. `utron` doesn't assume anything. We focus on things that matter, this way we are able to ensure easy maintenance and keep the system well-organized, well-planned and sweet.
+
+* Elegance. `utron` uses golang best practises. We are not afraid of heights, it's just that we need a parachute in our backpack. The source code is heavily documented, any functionality should be well explained and well tested.
+
+## Motivation
+After two years of playing with golang, I have looked on some of my projects and asked myself: "How golang is that?"
+
+So, `utron` is my reimagining of lightweight MVC, that maintains the golang spirit, and works seamlessly with the current libraries.
+
+
 ## Installation
 
-Luca vc test 2
+`utron` works with Go 1.4+
 
-1. Install Go 1.4.x or greater, git, setup `$GOPATH`, and `PATH=$PATH:$GOPATH/bin`
+     go get github.com/gernest/utron
 
-2. Run the server
-    ```
-    cd $GOPATH/src/github.com/LucaTony/SIMS
-    go run main.go
-    ```
+For the Old API use
 
+	go get gopkg.in/gernest/utron.v1
 
-## Environment Variables for Configuration
+# Tutorials
 
-* **HTTP_ADDR:** The host and port. Default: `":8888"`
+- [create a todo list application with utron](https://github.com/utronframework/tutorials/blob/master/create_todo_list_application_with_utron.md)
+- [use custom not found handler in utron](https://github.com/utronframework/tutorials/blob/master/set_not_found_handler.md)
 
-* **HTTP_CERT_FILE:** Path to cert file. Default: `""`
+## Sample application
 
-* **HTTP_KEY_FILE:** Path to key file. Default: `""`
-
-* **HTTP_DRAIN_INTERVAL:** How long application will wait to drain old requests before restarting. Default: `"1s"`
-
-* **COOKIE_SECRET:** Cookie secret for session. Default: Auto generated.
+- [Todo list](https://github.com/utronframework/todo)
+- [File Upload](https://github.com/utronframework/upload)
+- [chat](https://github.com/utronframework/chat)
 
 
-## Vendoring Dependencies
+# Contributing
 
-Vendoring is handled by a separate project: [github.com/tools/godep](https://github.com/tools/godep).
+Start with clicking the star button to make the author and his neighbors happy. Then fork the repository and submit a pull request for whatever change you want to be added to this project.
 
-Here's a quick tutorial on how to use it. For more details, read the readme [here](https://github.com/tools/godep#godep).
-```
-# Save all your dependencies after running go get ./...
-godep save ./...
+If you have any questions, just open an issue.
 
-# Building with godep
-godep go build
+# Author
+Geofrey Ernest
 
-# Running tests with godep
-godep go test ./...
-```
+Twitter  : [@gernesti](https://twitter.com/gernesti)
 
 
-## Running in Vagrant
 
-There are two potential gotchas you need to know when running in Vagrant:
+# Acknowledgements
+These amazing projects have made `utron` possible:
 
-1. `GOPATH` is not defined when you ssh into Vagrant. To fix the problem, do `export GOPATH=/go` immediately after ssh.
+* [gorilla mux](https://github.com/gorilla/mux)
+* [ita](https://github.com/gernest/ita)
+* [gorm](https://github.com/jinzhu/gorm)
+* [alice](https://github.com/justinas/alice)
+* [golang](http://golang.org)
 
-2. PostgreSQL is not installed inside Vagrant. You must connect to your host PostgreSQL. Here's an example on how to run your application inside vagrant while connecting to your host PostgreSQL:
-```
-GOPATH=/go DSN=postgres://$(whoami)@$(netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10):5432/$PROJECT_NAME?sslmode=disable go run main.go
-```
+
+# Licence
+
+This project is released under the MIT licence. See [LICENCE](LICENCE) for more details.
