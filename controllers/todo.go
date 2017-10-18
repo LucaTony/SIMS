@@ -26,11 +26,6 @@ func (t *Todo) Home() {
 	t.HTML(http.StatusOK)
 }
 
-//NotFound Custom 404
-func NotFound(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("The page was not found!"))
-}
-
 //Create creates a todo  item
 func (t *Todo) Create() {
 	todo := &models.Todo{}
