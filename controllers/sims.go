@@ -1,6 +1,7 @@
 package controllers
 
 import (
+    "fmt"
 	"net/http"
 	"strconv"
 
@@ -19,6 +20,7 @@ type Todo struct {
 
 //Home renders a todo list
 func (t *Todo) Home() {
+    fmt.Println("Home")
 	todos := []*models.Todo{}
 	t.Ctx.DB.Order("created_at desc").Find(&todos)
 	t.Ctx.Data["List"] = todos
@@ -28,6 +30,7 @@ func (t *Todo) Home() {
 
 //Create creates a todo  item
 func (t *Todo) Create() {
+    fmt.Println("Creating..")
 	todo := &models.Todo{}
 	req := t.Ctx.Request()
 	_ = req.ParseForm()
@@ -56,14 +59,20 @@ func (t *Todo) Delete() {
 	t.Ctx.Redirect("/", http.StatusFound)
 }
 
+//func (t *Todo) Show() {
+    //fmt.Println("showing Model")
+    //t.HTML(http.StatusOK)
+    //t.Ctx.Redirect("/", http.StatusFound)
+//}
+
 //NewTodo returns a new  todo list controller
 func NewTodo() controller.Controller {
 	return &Todo{
 		Routes: []string{
+			"get;/test;Show",
 			"get;/;Home",
 			"post;/create;Create",
 			"get;/delete/{id};Delete",
-			"get;/test;NotFound",
 		},
 	}
 }
