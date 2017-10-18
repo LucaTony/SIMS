@@ -6,7 +6,7 @@ import (
 
 	"github.com/gernest/utron/controller"
 	"github.com/gorilla/schema"
-	"github.com/utronframework/todo/models"
+	"github.com/LucaTony/SIMS/models"
 )
 
 var decoder = schema.NewDecoder()
@@ -19,6 +19,15 @@ type Todo struct {
 
 //Home renders a todo list
 func (t *Todo) Home() {
+	todos := []*models.Todo{}
+	t.Ctx.DB.Order("created_at desc").Find(&todos)
+	t.Ctx.Data["List"] = todos
+	t.Ctx.Template = "index"
+	t.HTML(http.StatusOK)
+}
+
+//Home renders a todo list
+func (t *Todo) Test() {
 	todos := []*models.Todo{}
 	t.Ctx.DB.Order("created_at desc").Find(&todos)
 	t.Ctx.Data["List"] = todos
@@ -56,6 +65,7 @@ func (t *Todo) Delete() {
 	t.Ctx.Redirect("/", http.StatusFound)
 }
 
+
 //NewTodo returns a new  todo list controller
 func NewTodo() controller.Controller {
 	return &Todo{
@@ -63,6 +73,7 @@ func NewTodo() controller.Controller {
 			"get;/;Home",
 			"post;/create;Create",
 			"get;/delete/{id};Delete",
+			"get;/test;Test",
 		},
 	}
 }

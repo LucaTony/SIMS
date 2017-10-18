@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	"github.com/gernest/utron"
-	c "github.com/utronframework/todo/controllers"
-	"github.com/utronframework/todo/models"
+	c "github.com/LucaTony/SIMS/controllers"
+	"github.com/LucaTony/SIMS/models"
 )
 
 func main() {
