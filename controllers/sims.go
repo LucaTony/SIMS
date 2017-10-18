@@ -59,11 +59,6 @@ func (t *Todo) Delete() {
 	t.Ctx.Redirect("/", http.StatusFound)
 }
 
-//func (t *Todo) Show() {
-    //fmt.Println("showing Model")
-    //t.HTML(http.StatusOK)
-    //t.Ctx.Redirect("/", http.StatusFound)
-//}
 
 //NewTodo returns a new  todo list controller
 func NewTodo() controller.Controller {
