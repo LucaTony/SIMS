@@ -5,9 +5,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gernest/utron"
 	c "github.com/LucaTony/SIMS/controllers"
 	"github.com/LucaTony/SIMS/models"
+	"github.com/gernest/utron"
 )
 
 func main() {
@@ -26,6 +26,9 @@ func main() {
 
 	// Register Controller
 	app.AddController(c.NewTodo)
+
+	//404 custom handler
+	app.SetNotFoundHandler(http.HandlerFunc(c.NotFound))
 
 	// Start the server
 	port := fmt.Sprintf(":%d", app.Config.Port)

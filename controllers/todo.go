@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/LucaTony/SIMS/models"
 	"github.com/gernest/utron/controller"
 	"github.com/gorilla/schema"
-	"github.com/LucaTony/SIMS/models"
 )
 
 var decoder = schema.NewDecoder()
@@ -26,13 +26,9 @@ func (t *Todo) Home() {
 	t.HTML(http.StatusOK)
 }
 
-//Home renders a todo list
-func (t *Todo) Test() {
-	todos := []*models.Todo{}
-	t.Ctx.DB.Order("created_at desc").Find(&todos)
-	t.Ctx.Data["List"] = todos
-	t.Ctx.Template = "index"
-	t.HTML(http.StatusOK)
+//NotFound Custom 404
+func NotFound(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("The page was not found!"))
 }
 
 //Create creates a todo  item
@@ -65,7 +61,6 @@ func (t *Todo) Delete() {
 	t.Ctx.Redirect("/", http.StatusFound)
 }
 
-
 //NewTodo returns a new  todo list controller
 func NewTodo() controller.Controller {
 	return &Todo{
@@ -73,7 +68,7 @@ func NewTodo() controller.Controller {
 			"get;/;Home",
 			"post;/create;Create",
 			"get;/delete/{id};Delete",
-			"get;/test;Test",
+			"get;/test;NotFound",
 		},
 	}
 }
