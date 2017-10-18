@@ -1,6 +1,11 @@
 /*!
  * Our custom style
  */
+body {
+  background-color: #DCEDC8;
+}
+.bg-primary {
+  background-color: #DCEDC8 !important; }
 
 hr {
   border-color: #33691E; }
@@ -14,9 +19,11 @@ section {
   max-height: 80%;
 }
 .col-lg-12.green{
-  background-color: #DCEDC8;
-  box-shadow: 5px 5px 15px #505050;
+  background-color: #9CCC65;
+  box-shadow: 0 2px 2px 3px #c2daa7;
   border-radius: 5px;
+  padding-top: 30px;
+  padding-bottom: 10px;
 }
 .col-lg-12.blue{
   background-color: blue;
@@ -39,8 +46,6 @@ section {
 }
 
 
-.bg-primary {
-  background-color: white !important; }
 
 #mainNav {
   border-color: rgba(34, 34, 34, 0.05);
@@ -93,7 +98,10 @@ section {
           color: #8BC34A; }
       #mainNav.navbar-shrink {
         border-color: rgba(34, 34, 34, 0.05);
-        background-color: white; }
+        background-color: #E0E0E0;
+
+ 
+}
         #mainNav.navbar-shrink .navbar-brand {
           font-size: 16px;
           color: #8BC34A; }
