@@ -2,12 +2,25 @@ package controllers
 
 import (
 	"fmt"
-	//"net/http"
+    "net/http"
+    //"strings"
+    //"reflect"
 )
 
+//var x
+
 // Show Test
-func (t *Todo) Show() {
-    fmt.Println("showing Model")
+func (t *Todo) Test2() {
+    //fmt.Println("Test2")
+	req := t.Ctx.Request()
+    _ = req.ParseForm()
+
+    x := req.PostForm.Get("textinput")
+    //fmt.Println(req)
+    fmt.Println(x)
+
     //t.HTML(http.StatusOK)
-    //t.Ctx.Redirect("/test", http.StatusFound)
+    t.Ctx.Template = "/test"
+	t.Ctx.Redirect("/test", http.StatusFound)
 }
+

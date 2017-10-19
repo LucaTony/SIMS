@@ -20,7 +20,7 @@ type Todo struct {
 
 //Home renders a todo list
 func (t *Todo) Home() {
-    fmt.Println("Home")
+    //fmt.Println("Home")
 	todos := []*models.Todo{}
 	t.Ctx.DB.Order("created_at desc").Find(&todos)
 	t.Ctx.Data["List"] = todos
@@ -64,7 +64,7 @@ func (t *Todo) Delete() {
 func NewTodo() controller.Controller {
 	return &Todo{
 		Routes: []string{
-			"get;/test;Show",
+			"post;/test;Test2",
 			"get;/;Home",
 			"post;/create;Create",
 			"get;/delete/{id};Delete",
