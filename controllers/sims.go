@@ -64,8 +64,9 @@ func (t *Todo) Delete() {
 func NewTodo() controller.Controller {
 	return &Todo{
 		Routes: []string{
-			"post;/test;Test2",
 			"get;/;Home",
+			"post;/test;TestPost",
+            "get;/test;TestGet",
 			"post;/create;Create",
 			"get;/delete/{id};Delete",
 		},
