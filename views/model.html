@@ -1,30 +1,35 @@
 {{define "model"}}
 
 <section id="model">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center green">
-        <h2 class="section-heading">House Model</h2>
-        <hr class="primary">
-        <!-- Copy the following canvas and components in your page, changing their size / texts and other values if needed  -->
-        <canvas id="viewerCanvas" class="viewerComponent" height="300%" style="background-color: #CCCCCC; border: 1px solid gray; outline:none"
-          tabIndex="1"></canvas>
-        <div id="viewerProgressDiv" style="display: none;">
-          <progress id="viewerProgress" class="viewerComponent" value="0" max="200" style="width: 400px"></progress>
-          <label id="viewerProgressLabel" class="viewerComponent" style="margin-top: 2px; display: block; margin-left: 10px"></label>
-        </div>
-        <div style="margin-top: 0px">
-          <input id="aerialView" class="viewerComponent" name="cameraType" type="radio" style="visibility: hidden;" />
-          <label class="viewerComponent" for="aerialView" style="visibility: hidden;">Aerial view</label>
-          <input id="virtualVisit" class="viewerComponent" name="cameraType" type="radio" style="visibility: hidden;" />
-          <label class="viewerComponent" for="virtualVisit" style="visibility: hidden;">Virtual visit</label>
-          <select id="levelsAndCameras" class="viewerComponent" style="visibility: hidden;"></select>
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center green">
+                <h2 class="section-heading">House Model</h2>
+                <hr class="primary">
 
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                        </div>
+                    </div>
 
-      </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><img src="static/img/ph.png" alt="" /></div>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><img src="static/img/pilot/thumbnails/2.jpg" alt="" /></div>
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><img src="static/img/pilot/thumbnails/3.jpg" alt="" /></div>
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 

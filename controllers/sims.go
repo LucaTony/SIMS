@@ -2,73 +2,80 @@ package controllers
 
 import (
     "fmt"
-	"net/http"
-	"strconv"
+    "net/http"
+    "strconv"
 
-	"github.com/LucaTony/SIMS/models"
-	"github.com/gernest/utron/controller"
-	"github.com/gorilla/schema"
+    "github.com/LucaTony/SIMS/models"
+    "github.com/gernest/utron/controller"
+    "github.com/gorilla/schema"
 )
 
 var decoder = schema.NewDecoder()
 
 //Todo is a controller for Todo list
 type Todo struct {
-	controller.BaseController
-	Routes []string
+    controller.BaseController
+    Routes []string
 }
 
 //Home renders a todo list
 func (t *Todo) Home() {
     //fmt.Println("Home")
-	todos := []*models.Todo{}
-	t.Ctx.DB.Order("created_at desc").Find(&todos)
-	t.Ctx.Data["List"] = todos
-	t.Ctx.Template = "index"
-	t.HTML(http.StatusOK)
+    todos := []*models.Todo{}
+    t.Ctx.DB.Order("created_at desc").Find(&todos)
+    t.Ctx.Data["List"] = todos
+    t.Ctx.Template = "index"
+    t.HTML(http.StatusOK)
+}
+
+//Home renders a todo list
+func (t *Todo) TestHome() {
+    t.Ctx.Template = "testing"
+    t.HTML(http.StatusOK)
 }
 
 //Create creates a todo  item
 func (t *Todo) Create() {
     fmt.Println("Creating..")
-	todo := &models.Todo{}
-	req := t.Ctx.Request()
-	_ = req.ParseForm()
-	if err := decoder.Decode(todo, req.PostForm); err != nil {
-		t.Ctx.Data["Message"] = err.Error()
-		t.Ctx.Template = "error"
-		t.HTML(http.StatusInternalServerError)
-		return
-	}
+    todo := &models.Todo{}
+    req := t.Ctx.Request()
+    _ = req.ParseForm()
+    if err := decoder.Decode(todo, req.PostForm); err != nil {
+        t.Ctx.Data["Message"] = err.Error()
+        t.Ctx.Template = "error"
+        t.HTML(http.StatusInternalServerError)
+        return
+    }
 
-	t.Ctx.DB.Create(todo)
-	t.Ctx.Redirect("/", http.StatusFound)
+    t.Ctx.DB.Create(todo)
+    t.Ctx.Redirect("/", http.StatusFound)
 }
 
 //Delete deletes a todo item
 func (t *Todo) Delete() {
-	todoID := t.Ctx.Params["id"]
-	ID, err := strconv.Atoi(todoID)
-	if err != nil {
-		t.Ctx.Data["Message"] = err.Error()
-		t.Ctx.Template = "error"
-		t.HTML(http.StatusInternalServerError)
-		return
-	}
-	t.Ctx.DB.Delete(&models.Todo{ID: ID})
-	t.Ctx.Redirect("/", http.StatusFound)
+    todoID := t.Ctx.Params["id"]
+    ID, err := strconv.Atoi(todoID)
+    if err != nil {
+        t.Ctx.Data["Message"] = err.Error()
+        t.Ctx.Template = "error"
+        t.HTML(http.StatusInternalServerError)
+        return
+    }
+    t.Ctx.DB.Delete(&models.Todo{ID: ID})
+    t.Ctx.Redirect("/", http.StatusFound)
 }
 
 
 //NewTodo returns a new  todo list controller
 func NewTodo() controller.Controller {
-	return &Todo{
-		Routes: []string{
-			"get;/;Home",
-			"post;/test;TestPost",
-            "get;/test;TestGet",
-			"post;/create;Create",
-			"get;/delete/{id};Delete",
-		},
-	}
+    return &Todo{
+        Routes: []string{
+            "get;/;Home",
+            "get;/testing;TestHome",
+            "post;/testing/send;TestPost",
+            "get;/testing/send;TestGet",
+            "post;/create;Create",
+            "get;/delete/{id};Delete",
+        },
+    }
 }

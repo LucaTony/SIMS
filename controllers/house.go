@@ -9,7 +9,7 @@ import (
 
 var X string
 
-// Show Test
+//Testing POST
 func (t *Todo) TestPost() {
     fmt.Println("TestPost")
 	req := t.Ctx.Request()
@@ -20,13 +20,14 @@ func (t *Todo) TestPost() {
 
     //t.HTML(http.StatusOK)
     //t.Ctx.Template = "/test" //Post doesn't need a template
-	t.Ctx.Redirect("/test", http.StatusFound)
+	t.Ctx.Redirect("/testing/send", http.StatusFound)
 }
 
+//Testing GET
 func (t *Todo) TestGet() {
     fmt.Println("TestGet")
     //t.HTML(http.StatusOK)
 	t.Ctx.Data["Data"] = X
-    t.Ctx.Template = "test"
+    t.Ctx.Template = "send"
     //t.Ctx.Redirect("/test", http.StatusFound) //don't redirect
 }
