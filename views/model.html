@@ -6,59 +6,74 @@
             <div class="col-lg-12 text-center green">
                 <h2 class="section-heading">House Model</h2>
                 <hr class="primary">
-                <!--This is a carousel to display the pictures of the house model,
-                it also includes a navigationbar to make it possible to 
-                skip to specific pictures of the model. -->    
-                <div id="carouselControls" class="carousel slide" data-interval="false">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img src="static/img/foundation.png" alt="" width="90%" height="520px" /> </div>
-                        <div class="carousel-item">
-                            <img src="static/img/framework.png" alt="" width="90%" height="520px" />
-                        </div>
-                        <div class="carousel-item">
-                            <img src="static/img/ph3.png" alt="" />
-                        </div>
-                        <div class="carousel-item">
-                            <img src="static/img/ph4.png" alt="" />
-                        </div>
-                        <div class="carousel-item">
-                            <img src="static/img/ph5.png" alt="" />
-                        </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <!--This is a carousel to display the pictures of the house model,
+                            it also includes a navigationbar to make it possible to 
+                            skip to specific pictures of the model. -->    
+                            <div id="carouselControls" class="carousel slide" data-interval="false">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active ">
+                                        <img class="w-75" src="static/img/foundation.png" alt=""  />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="w-75" src="static/img/framework.png" alt=""  />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="static/img/ph3.png" alt="" />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="static/img/ph4.png" alt="" />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="static/img/ph5.png" alt="" />
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                                <!--This is the navigation bar for the house model.
+                                    This makes it possible for the user to choose a specific sceen from the model.-->
+                                    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                                        <li class="nav-item" data-target="#carouselControls" data-slide-to="0" class="active">
+                                            <a class="nav-link active" data-target="#carouselControls" id="pills-stage-1" data-toggle="pill" href="#pills-stage-1" role="tab" aria-controls="pills-stage-1"
+                                                                                                                                                                              aria-selected="true"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="nav-item" data-target="#carouselControls" data-slide-to="1">
+                                            <a class="nav-link" id="pills-stage-2" data-toggle="pill" href="#pills-stage-2" role="tab" aria-controls="pills-stage-2"
+                                                                                                                                       aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="nav-item" data-target="#carouselControls" data-slide-to="2">
+                                            <a class="nav-link" id="pills-stage-3" data-toggle="pill" href="#pills-stage-3" role="tab" aria-controls="pills-stage-3"
+                                                                                                                                       aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="nav-item" data-target="#carouselControls" data-slide-to="3">
+                                            <a class="nav-link" id="pills-stage-4" data-toggle="pill" href="#pills-stage-4" role="tab" aria-controls="pills-stage-4"
+                                                                                                                                       aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="nav-item" data-target="#carouselControls" data-slide-to="4">
+                                            <a class="nav-link" id="pills-stage-5" data-toggle="pill" href="#pills-stage-5" role="tab" aria-controls="pills-stage-5"
+                                                                                                                                       aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                                        </li>
+                                    </ul>
+                            </div>
+
                     </div>
-                    <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                    <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                </div>
-                    <!--This is the navigation bar for the house model.
-                    This makes it possible for the user to choose a specific sceen from the model.-->
-                    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
-                        <li class="nav-item" data-target="#carouselControls" data-slide-to="0" class="active">
-                            <a class="nav-link active" id="pills-stage-1" data-toggle="pill" href="#pills-stage-1" role="tab" aria-controls="pills-stage-1"
-                                aria-selected="true"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item" data-target="#carouselControls" data-slide-to="1">
-                            <a class="nav-link" id="pills-stage-2" data-toggle="pill" href="#pills-stage-2" role="tab" aria-controls="pills-stage-2"
-                                aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item" data-target="#carouselControls" data-slide-to="2">
-                            <a class="nav-link" id="pills-stage-3" data-toggle="pill" href="#pills-stage-3" role="tab" aria-controls="pills-stage-3"
-                                aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item" data-target="#carouselControls" data-slide-to="3">
-                            <a class="nav-link" id="pills-stage-4" data-toggle="pill" href="#pills-stage-4" role="tab" aria-controls="pills-stage-4"
-                                aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
-                        </li>
-                        <li class="nav-item" data-target="#carouselControls" data-slide-to="4">
-                            <a class="nav-link" id="pills-stage-5" data-toggle="pill" href="#pills-stage-5" role="tab" aria-controls="pills-stage-5"
-                                aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
+                    <div class="col-lg-3">
+                        <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Dark card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
