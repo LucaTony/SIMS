@@ -10,33 +10,107 @@
                     <div class="col-lg-9">
 
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><img class="w-75" src="static/img/foundation.png" alt="" /></div>
-                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><img class="w-75" src="static/img/framework.png" alt="" /></div>
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                            <div class="tab-pane fade show active" id="pills-stage1" role="tabpanel" aria-labelledby="pills-home-tab"><img class="mw-100 rounded" src="static/img/foundation.png" alt="" /></div>
+                            <div class="tab-pane fade" id="pills-stage2" role="tabpanel" aria-labelledby="pills-profile-tab"><img class="mw-100 rounded" src="static/img/framework.png" alt="" /></div>
+                            <div class="tab-pane fade" id="pills-stage3" role="tabpanel" aria-labelledby="pills-profile-tab"><img class="mw-100 rounded" src="static/img/windows.png" alt="" /></div>
+                            <div class="tab-pane fade" id="pills-stage4" role="tabpanel" aria-labelledby="pills-profile-tab"><img class="mw-100 rounded" src="static/img/roof.png" alt="" /></div>
+
+
+                            <!--<div class="menu">-->
+                            <!--<a  id="showall">All</a>-->
+                            <!--<a  class="showSingle" target="1">Div 1</a>-->
+                            <!--<a  class="showSingle" target="2">Div 2</a>-->
+                            <!--<a  class="showSingle" target="3">Div 3</a>-->
+                            <!--<a  class="showSingle" target="4">Div 4</a>-->
+                            <!--</div>-->
+
+                            <!--<section class="cnt">-->
+                            <!--<div id="div1" class="targetDiv">Content   1</div>-->
+                            <!--<div id="div2" class="targetDiv">Content   2</div>-->
+                            <!--<div id="div3" class="targetDiv">Content   3</div>-->
+                            <!--<div id="div4" class="targetDiv">Content   4</div>-->
+                            <!--</section>-->
+
+
                         </div>
+
+
 
 
                         <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                                <a class="nav-link active showStage1" id="pills-stage1-tab" data-toggle="pill" href="#pills-stage1" role="tab" aria-controls="pills-stage1" aria-selected="true"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                                <a class="nav-link showStage2" id="pills-stage2-tab" data-toggle="pill" href="#pills-stage2" role="tab" aria-controls="pills-stage2" aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                                <a class="nav-link showStage3" id="pills-stage3-tab" data-toggle="pill" href="#pills-stage3" role="tab" aria-controls="pills-stage3" aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link showStage4" id="pills-stage4-tab" data-toggle="pill" href="#pills-stage4" role="tab" aria-controls="pills-stage4" aria-selected="false"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
                             </li>
                         </ul>
-
-
-
                     </div>
 
                     <div class="col-lg-3">
-                        <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                        <div class="card text-white bg-dark mb-3 targetStage1" style="max-width: 20rem;">
+                            <div class="card-header">Stage 1</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Option<span class="badge badge-danger">Cost</span><span class="badge badge-success">Vatten</span></h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <!--<div class="card text-white bg-dark mb-3 targetStage2" style="display:none; max-width: 20rem;">-->
+                        <!--<div class="card-header">Stage 2</div>-->
+                        <!--<div class="card-body">-->
+                        <!--<h4 class="card-title">Option<span class="badge badge-danger">Cost</span><span class="badge badge-success">Vatten</span></h4>-->
+                        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="card text-white bg-success mb-3 targetStage2" style="display:none; max-width: 20rem;">
                             <div class="card-header">Header</div>
                             <div class="card-body">
-                                <h4 class="card-title">Dark card title</h4>
+                                <h4 class="card-title">Success card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-warning mb-3 targetStage2" style="display:none; max-width: 20rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Success card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-danger mb-3 targetStage2" style="display:none; max-width: 20rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Success card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <div class="card border-dark mb-3 targetStage3" style="display: none; max-width: 20rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body text-success">
+                                <h4 class="card-title">Success card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <div class="card-body text-warning">
+                                <h4 class="card-title">Warning card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <div class="card-body text-danger">
+                                <h4 class="card-title">Danger card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card bg-light mb-3 targetStage4" style="display:none; max-width: 20rem;">
+                            <div class="card-header">Stage 4</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Option <span class="badge badge-danger"> Cost</span><span class="badge badge-success">Vatten</span></h4>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
