@@ -72,8 +72,13 @@ func NewTodo() controller.Controller {
         Routes: []string{
             "get;/;Home",
             "get;/testing;TestHome",
+
             "post;/testing/send;TestPost",
             "get;/testing/send;TestGet",
+
+            "post;/search;SearchPost",
+            "get;/search;SearchGet",
+
             "post;/create;Create",
             "get;/delete/{id};Delete",
         },

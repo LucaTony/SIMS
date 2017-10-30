@@ -1,0 +1,25 @@
+{{define "search"}}
+
+<section id="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center green">
+                <h2 class="section-heading ">Search</h2>
+                <hr class="primary">
+
+                
+                <form action="/search" method="post">
+                <div class="input-group">
+                    <input type="search" class="form-control" name="searchinput" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                </form>
+
+            </div>
+        </div>
+</section>
+
+
+{{template "footer" .}}
+{{end}}
