@@ -25,12 +25,12 @@ func (t *Todo) SearchPost() {
     //t.HTML(http.StatusOK)
     //t.Ctx.Template = "/test" //Post doesn't need a template
 
-    t.Ctx.Redirect("/search", http.StatusFound)
+    t.Ctx.Redirect("/", http.StatusFound)
 }
 
 
 //Testing GET
-func (t *Todo) SearchGet() {
+func (t *Todo) Home() {
     fmt.Println("SearchGet")
     //t.HTML(http.StatusOK)
     todos := []*models.Todo{} // Create empty slice of struct pointers.
@@ -54,8 +54,8 @@ func (t *Todo) SearchGet() {
     //fmt.Println(reflect.TypeOf(t.Ctx.Data["List"]))
     //for _, v := range todos {fmt.Printf("%v",v.Body)} // Iterate throuh objects, only value (since the _)
 
-    //t.Ctx.Template = "index"
-    t.Ctx.Template = "found"
+    t.Ctx.Template = "index"
+    //t.Ctx.Template = "found"
     t.HTML(http.StatusOK)
 
 }

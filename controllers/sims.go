@@ -19,7 +19,7 @@ type Todo struct {
 }
 
 //Home renders a todo list
-func (t *Todo) Home() {
+func (t *Todo) HomeOld() {
     //fmt.Println("Home")
     todos := []*models.Todo{}
     t.Ctx.DB.Order("created_at desc").Find(&todos)
@@ -28,11 +28,6 @@ func (t *Todo) Home() {
     t.HTML(http.StatusOK)
 }
 
-//Home renders a todo list
-func (t *Todo) TestHome() {
-    t.Ctx.Template = "testing"
-    t.HTML(http.StatusOK)
-}
 
 //Create creates a todo  item
 func (t *Todo) Create() {
