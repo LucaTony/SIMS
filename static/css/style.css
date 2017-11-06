@@ -9,9 +9,7 @@ background-color: #DCEDC8 !important; }
 
 hr {
 border-color: #33691E; }
-.row{
-    padding-block-start: 80px;
-}
+
 section {
 padding: 70px 0; }
 .temp{
@@ -129,3 +127,13 @@ background-image: url("../img/house.jpg");}
 
 .portfolio-box .portfolio-box-caption {
 background: rgba(104, 159, 56, 0.9);}
+
+
+@media (min-width: 992px) {
+  .modal-lg {
+    max-width: 100%;
+    
+  }
+}
+
+

@@ -1,5 +1,6 @@
 {{define "search"}}
 
+
 <section id="search">
     <div class="container">
         <div class="row">
@@ -7,18 +8,30 @@
                 <h2 class="section-heading ">Search</h2>
                 <hr class="primary">
 
-                
-                <form action="/search" method="post">
-                <div class="input-group">
-                    <input type="search" class="form-control" name="searchinput" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </span>
-                </form>
-	<h1>We found: {{ .Data }}!!!</h1>
 
+                <form action="/search" method="post">
+                    <div class="input-group mb-3">
+                        <input type="search" class="form-control" name="searchinput" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </form>
+
+                {{ range $v := .Data}}
+                <div class="card text-left mt-2">
+                    <div class="card-header">
+                        {{$v.Title}}
+                    </div>
+                    <div class="card-body text-left">
+                        <p class="card-text">
+                        {{$v.Body}}
+                        </p>
+                        <a href="{{$v.Url}}" class="btn btn-primary">Go to Website</a>
+                    </div>
+                </div>
+                {{end}}
             </div>
-        </div>
 </section>
 
 

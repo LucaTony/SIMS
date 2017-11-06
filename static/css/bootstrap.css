@@ -4714,8 +4714,7 @@ button.close {
 
 @media (min-width: 992px) {
   .modal-lg {
-    max-width: 100%;
-    
+    max-width: 800px;
   }
 }
 
