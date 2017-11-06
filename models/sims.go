@@ -1,13 +1,15 @@
 package models
 
 import (
-	"time"
+    "time"
 )
 
 //Todo represent an item of todo list
 type Todo struct {
-	ID        int       `schema:"-"`
-	Body      string    `schema:"body"`
-	CreatedAt time.Time `schema:"-"`
-	UpdatedAt time.Time `schema:"-"`
+    ID          int         `schema:"-"`
+    Title       string      `schema:"title"`
+    Body        string      `schema:"body"`
+    URL	        string      `schema:"url"`
+    CreatedAt   time.Time   `schema:"-"`
+    UpdatedAt   time.Time   `schema:"-"`
 }
