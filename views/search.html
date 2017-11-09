@@ -17,7 +17,6 @@
                         </span>
                     </div>
                 </form>
-
                 {{ range $v := .Data}}
                 <div class="card text-left mt-2">
                     <div class="card-header">
@@ -25,9 +24,10 @@
                     </div>
                     <div class="card-body text-left">
                         <p class="card-text">
+                        <!--<h4>Found: {{$v.Score}} times</h4>-->
                         {{$v.Body}}
                         </p>
-                        <a href="{{$v.Url}}" class="btn btn-primary">Go to Website</a>
+                        <a target="_blank" href="{{$v.Url}}" class="btn btn-primary">Go to Website</a>
                     </div>
                 </div>
                 {{end}}

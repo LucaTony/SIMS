@@ -76,6 +76,7 @@ func NewTodo() controller.Controller {
 
             "post;/create;Create",
             "get;/delete/{id};Delete",
+            "get;/update;UpdateGet",
         },
     }
 }
