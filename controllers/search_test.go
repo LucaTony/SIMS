@@ -9,9 +9,7 @@ import(
 
 
 func TestHome(t *testing.T) {
-
     todos := []DataSend{}
-
     tempTodo := DataSend{ //TODO: Direct
         Title: "TestTitle",
         Body:  "Vg37 eBT8 6Fw3 yVD5 3YrN 5AgH rg9A 7Mtt 5inS YvJ4",
