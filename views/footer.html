@@ -24,32 +24,42 @@
 
     <!-- Custom scripts for this template -->
     <script src="static/js/creative.min.js"></script>
+    <script src="static/js/jquery.rwdImageMaps.min.js"></script>
 
     <script>
-jQuery(function(){
-    jQuery('.showStage1').click(function(){
-        jQuery('.card').hide();
-        jQuery('.targetStage1').show();
+$(document).ready(function(e) {
+    jQuery(function(){
+        jQuery('.showStage1').click(function(){
+            jQuery('.card').hide();
+            jQuery('.targetStage1').show();
+        });
+        jQuery('.showStage2').click(function(){
+            jQuery('.card').hide();
+            jQuery('.targetStage2').show();
+        });
+        jQuery('.showStage2').click(function(){
+            jQuery('.card').hide();
+            jQuery('.targetStage2').show();
+        });
+        jQuery('.showStage3').click(function(){
+            jQuery('.card').hide();
+            jQuery('.targetStage3').show();
+        });
+        jQuery('.showStage4').click(function(){
+            jQuery('.card').hide();
+            jQuery('.targetStage4').show();
+        });
+        jQuery('.showStage5').click(function(){
+            jQuery('.card').hide();
+            jQuery('.targetStage5').show();
+        });
+        jQuery('.showStage6').click(function(){
+            jQuery('.card').hide();
+            jQuery('.targetStage6').show();
+        });
+        $('img[usemap]').rwdImageMaps();
     });
-    jQuery('.showStage2').click(function(){
-        jQuery('.card').hide();
-        jQuery('.targetStage2').show();
-    });
-    jQuery('.showStage2').click(function(){
-        jQuery('.card').hide();
-        jQuery('.targetStage2').show();
-    });
-    jQuery('.showStage3').click(function(){
-        jQuery('.card').hide();
-        jQuery('.targetStage3').show();
-    });
-    jQuery('.showStage4').click(function(){
-        jQuery('.card').hide();
-        jQuery('.targetStage4').show();
-    });
-
 });
     </script>
-
 
     {{end}}
