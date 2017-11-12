@@ -1,3 +1,5 @@
+//Package controllers handles the different routes and is the interface between
+// the model and the view
 package controllers
 
 import (
@@ -17,17 +19,6 @@ type Todo struct {
     controller.BaseController
     Routes []string
 }
-
-//Home renders a todo list
-func (t *Todo) HomeOld() {
-    //fmt.Println("Home")
-    todos := []*models.Todo{}
-    t.Ctx.DB.Order("created_at desc").Find(&todos)
-    t.Ctx.Data["List"] = todos
-    t.Ctx.Template = "index"
-    t.HTML(http.StatusOK)
-}
-
 
 //Create creates a todo  item
 func (t *Todo) Create() {
@@ -60,16 +51,17 @@ func (t *Todo) Delete() {
     t.Ctx.Redirect("/", http.StatusFound)
 }
 
+//Testing is a test function
+func (t *Todo) Testing() {
+    fmt.Println("Testing")
+}
+
 
 //NewTodo returns a new  todo list controller
 func NewTodo() controller.Controller {
     return &Todo{
         Routes: []string{
             "get;/;Home",
-            "get;/testing;TestHome",
-
-            "post;/testing/send;TestPost",
-            "get;/testing/send;TestGet",
 
             "post;/search;SearchPost",
             "get;/search;SearchGet",

@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
-        <title>Test Object</title>
+
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Sundsvall ECO-House Coach</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="static/css/bootstrap.css" rel="stylesheet">
+
+        <!-- Custom fonts for this template -->
+        <link href="static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+        <!-- Plugin CSS -->
+        <link href="static/css/magnific-popup.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="static/css/creative.css" rel="stylesheet">
+        <link href="static/css/style.css" rel="stylesheet">
+
+
     </head>
-    <body>
-
-<form action="/testing/send" method="post">
-    <input type="submit" value="Button1">
-    <input type="submit" value="Button2">
-    <input type="submit" value="Button3">
-    <input class="new-todo"  name="textinput" placeholder="What needs to be done?" autofocus>
-</form>
 
 
+<section id="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center green">
+                <h2 class="section-heading ">Search</h2>
+                <hr class="primary">
+
+
+                <form action="/search" method="post">
+                    <div class="input-group mb-3">
+                        <input type="search" class="form-control" name="searchinput" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </form>
+                {{ range $v := .Data}}
+                <div class="card text-left mt-2">
+                    <div class="card-header">
+                        {{$v.Title}}
+                    </div>
+                    <div class="card-body text-left">
+                        <p class="card-text">
+                        <!--<h4>Found: {{$v.Score}} times</h4>-->
+                        {{$v.Body}}
+                        </p>
+                        <a target="_blank" href="{{$v.Url}}" class="btn btn-primary">Go to Website</a>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+</section>
     </body>
 </html>
+

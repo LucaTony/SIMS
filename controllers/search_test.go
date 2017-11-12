@@ -7,7 +7,7 @@ import(
     _ "github.com/LucaTony/SIMS/models"
 )
 
-
+//TestHome is a test function to test the Home
 func TestHome(t *testing.T) {
     todos := []DataSend{}
     tempTodo := DataSend{ //TODO: Direct
