@@ -83,7 +83,7 @@ func (t *Todo) Home() {
     //fmt.Println(reflect.TypeOf(t.Ctx.Data["List"]))
     //for _, v := range todos {fmt.Printf("%v",v.Body)} // Iterate throuh objects, only value (since the _)
 
-    //t.Ctx.Template = "index"
-    t.Ctx.Template = "testing"
+    t.Ctx.Template = "index"
+    //t.Ctx.Template = "testing"
     t.HTML(http.StatusOK)
 }
