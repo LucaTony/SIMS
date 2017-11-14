@@ -29,6 +29,7 @@
 *.log
 *.sql
 *.sqlite
+config/app.json
 
 # OS generated files #
 ######################
