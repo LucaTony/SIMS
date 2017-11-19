@@ -7,10 +7,174 @@
             <div class="col-lg-12 text-center green">
                 <h2 class="section-heading ">Footprint Calculator</h2>
                 <hr class="primary">
-                <img class="temp" src="static/img/Eco_Footprint.png" alt="" >
+                <div class="container-fluid">
+
+                    <!--Start part of quiz-->
+                    <div class="calc-card" id="0">
+                        <div class="tab-content">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Detta är en Kalkylator som ger dig svar på hur pass miljövänlig du är. Svara på dessa
+                                        tio frågor för att få reda på din påverkan på miljön. Kanske får du några tips på
+                                        saker du kan göra bättre eller tänka på.
+                                    </p>
+                                    <button type="button" class="btn btn-primary btn-lg" onclick="changeCard(1)">Start Quiz</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--progress-bar-->
+                        <div class="progress" id="pro" style="height: 20px; display:none;">
+                            <div class="progress-bar" id="probar" role="progressbar" style="height: 2rem;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    
+                    <!-- Question 1-->
+                    <div class="calc-card" id="1" style="display: none;">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>1. Rank importance of these elements 1-4 (1 most important, 4 least important) </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ol>
+                                    <li>
+                                        Heating
+                                    </li>
+                                    <li>
+                                        Water
+                                    </li>
+                                    <li>
+                                        Energy
+                                    </li>
+
+                                    <li>
+                                        Water
+                                    </li>
+
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" disabled><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                    Prev
+                      </button>
+                            </div>
+
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" onclick="changeCard(2)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                      </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--question 2-->
+                    <div class="calc-card" id="2" style="display: none;">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>2. Do you take the car to work? </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ol>
+                                    <li>
+                                        <input name="options" id="option2" autocomplete="off" type="radio"> Yes
+                                    </li>
+                                    <li>
+                                        <input name="options" id="option2" autocomplete="off" type="radio"> No
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" onclick="changeCard(1)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                    Prev
+                      </button>
+                            </div>
+                            
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" onclick="changeCard(3)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                      </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--question 3-->
+                    <div class="calc-card" id="3" style="display: none;">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>3. Do you take the car to work? </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ol>
+                                    <li>
+                                        <input name="options" id="option2" autocomplete="off" type="radio"> Yes
+                                    </li>
+                                    <li>
+                                        <input name="options" id="option2" autocomplete="off" type="radio"> No
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" onclick="changeCard(2)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                    Prev
+                          </button>
+                            </div>
+                            
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" onclick="changeCard(4)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                          </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--question 4-->
+                    <div class="calc-card" id="4" style="display: none;">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>4. Do you take the car to work? </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ol>
+                                    <li>
+                                        <input name="options" id="option2" autocomplete="off" type="radio"> Yes
+                                    </li>
+                                    <li>
+                                        <input name="options" id="option2" autocomplete="off" type="radio"> No
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" onclick="changeCard(3)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                    Prev
+                          </button>
+                            </div>
+                            
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" disabled>Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                          </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
-    </div>
 </section>
 
 {{template "pilot" .}} {{end}}
