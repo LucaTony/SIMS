@@ -73,13 +73,27 @@ $(document).ready(function(e) {
             cards[i].style.display = "none";
         }
         var newCard = document.getElementById(quest);
-        newCard.style.display = "block";  
+        newCard.style.display = "block"; 
+        if(quest == 11){
+            parentpro.style.display = "none";
+        } else{
         parentpro.style.display = "block";
         w = quest / maxquest * 100;
         childpro.innerText = quest + "/" + maxquest; 
         childpro.style.width = w + "%";
+        }
 
     }    
+
+    function sticky_close(){
+        var sticky = document.getElementById("sticky");
+        sticky.style.display = "none";
+    }
+
+
+    function submit(){
+
+    }
     </script>
 
     {{end}}
