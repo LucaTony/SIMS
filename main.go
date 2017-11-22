@@ -20,13 +20,16 @@ func main() {
 	}
 
 	// Register Models
-	app.Model.Register(&models.Todo{})
+	app.Model.Register(&models.Search{})
+	app.Model.Register(&models.Test{})
+	app.Model.Register(&models.Calculator{})
+	app.Model.Register(&models.Result{})
 
 	// CReate Models tables if they dont exist yet
 	app.Model.AutoMigrateAll()
 
 	// Register Controller
-	app.AddController(c.NewTodo)
+	app.AddController(c.NewSims)
 
 	//404 custom handler
 	app.SetNotFoundHandler(http.HandlerFunc(c.NotFound))
@@ -34,5 +37,4 @@ func main() {
 	// Start the server
 	port := fmt.Sprintf(":%d", app.Config.Port)
 	app.Log.Info("staring server on port", port)
-	log.Fatal(http.ListenAndServe(port, app))
-}
+	log.Fatal(http.ListenAndServe(port, app)) }
