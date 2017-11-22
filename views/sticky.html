@@ -1,0 +1,34 @@
+{{define "sticky"}}
+
+<div class="position-sticky rounded" id="sticky">
+        <div class="card" style="background-color: #F6862F;">
+                <img class="card-img-top w-50 mx-auto mt-3" src="static/img/luft2.png" alt="Card image cap">
+                <div class="card-body">
+                        <h4 class="card-title" style="text-align: center;">Snabb Fakta</h4>
+                        <hr class="fun-fact">
+                        <p class="card-text">Välj buss eller cykel till jobbet. Det bidrar till en bättre luft. </p>
+                        <a href="#" id="close_fact" class="btn btn-primary" onclick="sticky_close()"><i class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+        </div>
+</div>
+
+<!--<div class="position-sticky rounded" id="sticky">
+        <div class="container">
+                <header class="content-header">
+                        <button type="button" id="close_fact" class="btn btn-primary float-right" onclick="sticky_close()"><i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                        <h2>Fun Fact!</h2>
+                </header>-->
+<!-- Content Body -->
+<!--<div class="content-body">
+                        <p>Text</p>
+                        <p>Text</p>
+                        <p>Text</p>
+
+                </div>
+        </div>
+</div>-->
+
+
+
+{{template "video" .}} {{end}}

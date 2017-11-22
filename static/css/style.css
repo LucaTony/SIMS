@@ -43,14 +43,28 @@ color: #000000;}
 a:focus, a:hover {
     color: #E0E0E0; 
 }
-
-.sticky-left{
-    position: sticky;
-    top: 100px;
-    width: 100px;
-    background-color: gray;
+#close_fact{
+    background-color: #6CA357;
+    border-color: #6CA357;
 }
-
+.fun-fact{
+    border-color: #6CA357;
+}
+.position-sticky{
+    position: fixed;
+    top: 14%;
+    width: 15%;
+    background-color:#F6862F;
+    /*border-radius: 10px;*/
+    color: white;
+    z-index: 5;
+    float: left;
+}
+@media screen and (max-width: 992px){
+    .position-sticky{
+        display: none;
+    }
+} 
 
 
 #mainNav {
