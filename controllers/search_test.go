@@ -9,40 +9,40 @@ import(
 
 //TestHome is a test function to test the Home
 func TestHome(t *testing.T) {
-    todos := []DataSend{}
-    tempTodo := DataSend{ //TODO: Direct
+    searches := []DataSend{}
+    tempSearch := DataSend{ //TODO: Direct
         Title: "TestTitle",
         Body:  "Vg37 eBT8 6Fw3 yVD5 3YrN 5AgH rg9A 7Mtt 5inS YvJ4",
         Url:   "TestUrl",
         Score: 0,
     }
-    todos = append(todos, tempTodo)
+    searches = append(searches, tempSearch)
 
     var mySearch = "Vg37 eBT8 6Fw3 yVD5 3YrN 5AgH rg9A 7Mtt 5inS YvJ4"
     var mySend = []DataSend {}
     var testScore = 0
 
     words := strings.Fields(mySearch)
-    for i := range todos {
+    for i := range searches {
         showentry := false
         score := 0
         for w := range words {
-            if (strings.Count(todos[i].Body, words[w]) != 0) {
-                score += strings.Count(todos[i].Body, words[w]) // add the amount one searched word occurs in a result
+            if (strings.Count(searches[i].Body, words[w]) != 0) {
+                score += strings.Count(searches[i].Body, words[w]) // add the amount one searched word occurs in a result
                 showentry = true
             }
         }
         if (showentry) {
             tempSend := DataSend{ //TODO: Direct
-                Title: todos[i].Title,
-                Body:  todos[i].Body,
-                Url:   todos[i].Url,
+                Title: searches[i].Title,
+                Body:  searches[i].Body,
+                Url:   searches[i].Url,
                 Score: score,
             }
             mySend = append(mySend, tempSend)
             //fmt.Println("added")
         }
-        //if (strings.Contains(strings.ToLower(w), strings.ToLower(todos[i].Body))) { // a searched word 
+        //if (strings.Contains(strings.ToLower(w), strings.ToLower(searches[i].Body))) { // a searched word 
     }
 
     sort.Sort(ByScore(mySend))

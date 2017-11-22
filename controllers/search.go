@@ -28,8 +28,8 @@ func (a ByScore) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a ByScore) Less(i, j int) bool { return a[i].Score > a[j].Score }
 
 
-//SearchpPost gets the data from the searchinput field
-func (t *Todo) SearchPost() {
+//Search gets the data from the searchinput field
+func (t *Search) HousePost() {
     fmt.Println("SearchPost")
     req := t.Ctx.Request()
     _ = req.ParseForm()
@@ -44,29 +44,29 @@ func (t *Todo) SearchPost() {
 
 //Home is the root get that shows the webpage and the search results if the search function is used
 //BUG(r): The searchinput should remain in the field when reloading
-func (t *Todo) Home() {
+func (t *Search) Home() {
     fmt.Println("SearchGet")
-    todos := []*models.Todo{} // Create empty slice of struct pointers.
+    searches := []*models.Search{} // Create empty slice of struct pointers.
 
-    t.Ctx.DB.Order("created_at desc").Find(&todos)
+    t.Ctx.DB.Order("created_at desc").Find(&searches)
 
     var mySend = []DataSend {}
 
     if (mySearch != ""){
         words := strings.Fields(mySearch)
-        for i := range todos {
+        for i := range searches {
             score := 0
             for w := range words {
-                tempScore := strings.Count(strings.ToLower(todos[i].Body), strings.ToLower(words[w]))
+                tempScore := strings.Count(strings.ToLower(searches[i].Body), strings.ToLower(words[w]))
                 if (tempScore != 0) {
                     score += tempScore // add the amount one searched word occurs in a result
                 }
             }
             if (score > 0) {
                 tempSend := DataSend{ //TODO: Direct
-                    Title: todos[i].Title,
-                    Body:  todos[i].Body,
-                    Url:   todos[i].URL,
+                    Title: searches[i].Title,
+                    Body:  searches[i].Body,
+                    Url:   searches[i].URL,
                     Score: score,
                 }
                 mySend = append(mySend, tempSend)
@@ -81,7 +81,7 @@ func (t *Todo) Home() {
     mySearch = "" // TODO: don't remove the searchfield text
 
     //fmt.Println(reflect.TypeOf(t.Ctx.Data["List"]))
-    //for _, v := range todos {fmt.Printf("%v",v.Body)} // Iterate throuh objects, only value (since the _)
+    //for _, v := range searches {fmt.Printf("%v",v.Body)} // Iterate throuh objects, only value (since the _)
 
     t.Ctx.Template = "index"
     //t.Ctx.Template = "testing"
