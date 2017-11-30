@@ -38,11 +38,7 @@ padding: 70px 0; }
 .nav-pills .nav-link.active, .show > .nav-pills .nav-link {
     background-color: #0C2C00;
 }
-a {
-color: #000000;}
-a:focus, a:hover {
-    color: #E0E0E0; 
-}
+
 #close_fact{
     background-color: #6CA357;
     border-color: #6CA357;
@@ -54,8 +50,6 @@ a:focus, a:hover {
     position: fixed;
     top: 14%;
     width: 15%;
-    background-color:#F6862F;
-    /*border-radius: 10px;*/
     color: white;
     z-index: 5;
     float: left;
@@ -184,4 +178,51 @@ img[usemap] {
 .carousel-control-next:focus,
 .carousel-control-next:hover {
   color: black;
+}
+
+#p.cf_controls {
+    text-align:center;
+  }
+  #cf_controls span.selected{
+      background-color: #0C2C00;
+      color: white;
+  } 
+  #cf_controls span {
+    font-size: 24px;
+    font-weight: bold;
+    padding:0.3em;
+    cursor:pointer;
+  }
+  #cf {
+    position: relative;
+    height: 450px;
+    width:800px;
+    margin:0 auto 10px;
+  }
+  #cf img {
+      position: absolute;
+      left: 0;
+    -webkit-transition: opacity 1.5s ease-in-out;
+    -moz-transition: opacity 1.5s ease-in-out;
+    -o-transition: opacity 1.5s ease-in-out;
+    transition: opacity 1.5s ease-in-out;
+    opacity:0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+  }
+  
+  #cf img.opaque {
+    opacity:1;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=1);
+  }
+@media (max-width: 1200px){
+    #cf{
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.card-img-top{
+    padding: 10px;
 }
