@@ -32,28 +32,38 @@ $(document).ready(function(e) {
     });
 });
 
+(function(){
+    new Clipboard('#copy-button');
+})();
+
 
 function changeCard(quest, np){
     var maxquest  = 10;
     var parentpro = document.getElementById("pro");
     var childpro  = document.getElementById("probar");
     var cards     = document.getElementsByClassName("calc-card");
-    if (np == "next") quest++;
-    else if (np == "prev") quest--;
 
-    for (var i = 0; i <cards.length; i++ ){
-        cards[i].style.display = "none";
-    }
-    var newCard = document.getElementById("Question"+quest);
-    newCard.style.display = "block"; 
-    if(quest == 11){
-        parentpro.style.display = "none";
-    } else {
-        parentpro.style.display = "block";
-        w = quest / maxquest * 100;
-        childpro.innerText = quest + "/" + maxquest; 
-        childpro.style.width = w + "%";
-    }
+    //Check if at least one radio has been checked
+    //ignore if you want to start the quiz or go back
+    if ($('input[name=Question'+quest+']:checked').length > 0  || quest == 0 || np == 'prev') {
+
+        if (np == "next") quest++;
+        else if (np == "prev") quest--;
+
+        for (var i = 0; i <cards.length; i++ ){
+            cards[i].style.display = "none";
+        }
+        var newCard = document.getElementById("Question"+quest);
+        newCard.style.display = "block"; 
+        if(quest == 11){
+            parentpro.style.display = "none";
+        } else {
+            parentpro.style.display = "block";
+            w = quest / maxquest * 100;
+            childpro.innerText = quest + "/" + maxquest; 
+            childpro.style.width = w + "%";
+        }
+    } else  alert("Please choose an answer");
 
 }    
 
