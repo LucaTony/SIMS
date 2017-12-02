@@ -7,13 +7,10 @@ function changeCard(quest, np) {
     var parentpro = document.getElementById("pro");
     var childpro = document.getElementById("probar");
     var cards = document.getElementsByClassName("calc-card");
-    if (np == "next") quest++;
-    else if (np == "prev") quest--;
 
     //Check if at least one radio has been checked
     //ignore if you want to start the quiz or go back
     if ($('input[name=Question'+quest+']:checked').length > 0  || quest == 0 || np == 'prev') {
-
         if (np == "next") quest++;
         else if (np == "prev") quest--;
 
@@ -91,5 +88,5 @@ function timer() {
         var one = document.getElementById("fact" + rand);
         one.style.display = "block";
 
-    }, 1000);
+    }, 15000);
 }

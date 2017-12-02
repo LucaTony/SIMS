@@ -28,49 +28,46 @@ type Calculator struct {
     Type       string      `schema:"type"`
     Amount     int         `schema: "amount"`
     Question   string      `schema:"quest"`
+    Recomm     string       `schema:"-"`
     Option01    string      `schema:"-"`
-    Points01    int         `schema:"-"`
+    Points01    float32     `schema:"-"`
     Option02    string      `schema:"-"`
-    Points02    int         `schema:"-"`
+    Points02    float32     `schema:"-"`
     Option03    string      `schema:"-"`
-    Points03    int         `schema:"-"`
+    Points03    float32     `schema:"-"`
     Option04    string      `schema:"-"`
-    Points04    int         `schema:"-"`
+    Points04    float32     `schema:"-"`
     Option05    string      `schema:"-"`
-    Points05    int         `schema:"-"`
+    Points05    float32     `schema:"-"`
     Option06    string      `schema:"-"`
-    Points06    int         `schema:"-"`
+    Points06    float32     `schema:"-"`
     Option07    string      `schema:"-"`
-    Points07    int         `schema:"-"`
+    Points07    float32     `schema:"-"`
     Option08    string      `schema:"-"`
-    Points08    int         `schema:"-"`
+    Points08    float32     `schema:"-"`
     Option09    string      `schema:"-"`
-    Points09    int         `schema:"-"`
+    Points09    float32     `schema:"-"`
     Option10    string      `schema:"-"`
-    Points10    int         `schema:"-"`
+    Points10    float32     `schema:"-"`
 }
 //Result represent the results from the calculator
 type Result struct {
     ID         int         `schema:"-"`
-    Total      int         `schema:"total"`
-    TakenAt   time.Time   `schema:"-"`
-    P01   string      `schema:"-"`
-    P02   string      `schema:"-"`
-    P03   string      `schema:"-"`
-    P04   string      `schema:"-"`
-    P05   string      `schema:"-"`
-    P06   string      `schema:"-"`
-    P07   string      `schema:"-"`
-    P08   string      `schema:"-"`
-    P09   string      `schema:"-"`
-    P10   string      `schema:"-"`
-    P11   string      `schema:"-"`
+    Total      float32         `schema:"total"`
+    CreatedAt   time.Time   `schema:"-"`
+    Recomm     string      `schema:"-"`
 }
 
+//FunFact represent the results from the calculator
+type FunFact struct {
+    ID          int         `schema:"-"`
+    Category    string      `schema:"-"`
+    Fact        string      `schema:"-"`
+}
 
 //TableName is a function to modify the standard name
 //for the database
 //func (*Results) TableName() {
-    //return "calculator_res"
+//return "calculator_res"
 //}
 
