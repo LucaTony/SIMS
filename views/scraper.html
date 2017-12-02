@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+        <title>Update</title>
+
+    </head>
+    <body>
+        Click the button to update the Database
+        <!--<button type="button" class="btn btn-primary btn-lg">Update</button>-->
+        <form action="/scraper" method="post">
+            <input class="btn btn-primary" type="submit" value="Update" />
+        </form>
+        {{ if .Urls }} The updated urls are:
+        {{ range $v := .Urls }}
+        <p>
+        {{$v}}
+        </p>
+        {{end}}
+        {{end}}
+
+    </body>
+</html>

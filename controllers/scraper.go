@@ -4,13 +4,14 @@ import (
     "fmt"
     "time"
     "net/http"
-    "github.com/anaskhan96/soup"
     "os"
-    "github.com/LucaTony/SIMS/models"
-    "github.com/antzucaro/matchr"
     _ "reflect"
     "strings"
     "strconv"
+    "github.com/anaskhan96/soup"
+    "github.com/LucaTony/SIMS/models"
+    "github.com/gernest/utron/controller"
+    "github.com/antzucaro/matchr"
 )
 
 //TODO: TrimLeft / 
@@ -18,8 +19,14 @@ import (
 var updated bool = false
 var updated_urls []string
 
+//Scraper is a controller for a Search list
+type Scraper struct {
+    controller.BaseController
+    Routes []string
+}
+
 //ScraperGet is a scraper to update the database
-func (t *Search) ScraperGet() {
+func (t *Scraper) ScraperGet() {
     fmt.Println("ScraperGet")
 
     //Check if Post got called
@@ -60,7 +67,7 @@ func CheckDue (existing string, recent string, updated time.Time) bool {
 }
 
 //ScraperPost is the Post function for the scaper
-func (t *Search) ScraperPost() {
+func (t *Scraper) ScraperPost() {
     updated = true
     searches := []*models.Search{} // Create empty slice of struct pointers.
     //todo := &models.Todo{}
@@ -115,4 +122,12 @@ func (t *Search) ScraperPost() {
     t.Ctx.Redirect("/scraper", http.StatusFound)
 }
 
-
+//NewScraper returns a new scraper list controller
+func NewScraper() controller.Controller {
+    return &Scraper{
+        Routes: []string{
+            "get;/scraper;ScraperGet",
+            "post;/scraper;ScraperPost",
+        },
+    }
+}
