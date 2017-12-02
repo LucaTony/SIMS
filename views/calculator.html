@@ -1,28 +1,65 @@
 {{define "calculator"}}
-
-
 <section id="calculator">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center green">
-                <h2 class="section-heading ">Footprint Calculator</h2>
+            <div class="col-lg-12 green">
+                <h2 class="section-heading text-center">Footprint Calculator</h2>
                 <hr class="primary">
                 <div class="container-fluid">
 
+                    {{ if .CalcResult }}
+                    {{ $s := .CalcResult }}
+                    <div class="card">
+                        <h4 class="card-header">Here are your Calculator Results</h4>
+                        <div class="card-body">
+                            <h4 class="card-title">Your score is (100% is best): </h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{$s}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$s}} %</div>
+                            </div>
+                            <h4 class="card-title">Swedish Law prescribes:</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">20 %</div>
+                            </div>
+                            <h4 class="card-title">2020 Goal is: </h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">30 %</div>
+                            </div>
+                            <h4>Att tänka pa:</h4>
+                            <!------------>
+                            {{ range $r := .CalcRecomm }}
+                            <h4 class="card-title">Question X</h4>
+                            <p class="card-text">{{$r}}</p>
+                            <!------------>
+                            {{ end }}
+                            <!-- Target -->
+                            <p>You can access your result anytime via this link:</p>
+                            <input id="resultlink" class="w-50" value="http://localhost:8888/result/{{.ResultLinkSend}}">
+
+                            <!-- Trigger -->
+                            <button class="btn btn-secondary" id="copy-button" data-clipboard-target="#resultlink">
+                                <img src="static/img/clippy.svg" width="13" alt="Copy to clipboard">
+                            </button>
+
+                        </div>
+                    </div>
+
+
+                    {{ else }}
                     <!--Start part of quiz-->
-                    <div class="calc-card" id="0">
+                    <div class="calc-card text-center" id="Question0" >
                         <div class="tab-content">
                             <div class="row">
                                 <div class="col">
                                     <p>Detta är en Kalkylator som ger dig svar på hur pass miljövänlig du är. Svara på dessa
-                                        tio frågor för att få reda på din påverkan på miljön. Kanske får du några tips på
-                                        saker du kan göra bättre eller tänka på.
+                                    tio frågor för att få reda på din påverkan på miljön. Kanske får du några tips på
+                                    saker du kan göra bättre eller tänka på.
                                     </p>
-                                    <button type="button" class="btn btn-primary btn-lg" onclick="changeCard(1)">Start Quiz</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="changeCard(0,'next')">Start Quiz</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {{ end }}
 
                     <!--progress-bar-->
                     <div class="progress" id="pro" style="height: 20px; display:none;">
@@ -31,333 +68,67 @@
 
                     <!-- Question 1-->
                     <form method="post" action="/calculator">
-                    <div class="calc-card" id="1" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>1. Inom en 5 km radie, vilket färdmedel väljer du oftast? </h4>
+                        {{ range $q := .CalcSend }}
+                        <div class="calc-card" id="Question{{$q.ID }}" style="display: none;">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4 class="d-flex justify-content-center mt-3">{{ $q.Question }}</h4>
+                                    <div class="d-flex justify-content-center align-items-center mt-3" style="flex-direction: column">
+                                        {{ if $q.Option01 }}
+                                        <div class="radio w-25">
+                                            <label><input type="radio" name="Question{{ $q.ID }}" value="1"> {{ $q.Option01 }}</label>
+                                        </div>
+                                        {{ end }}
+                                        {{ if $q.Option02 }}
+                                        <div class="radio w-25">
+                                            <label><input type="radio" name="Question{{ $q.ID }}" value="2"> {{ $q.Option02 }}</label>
+                                        </div>
+                                        {{ end }}
+                                        {{ if $q.Option03 }}
+                                        <div class="radio w-25">
+                                            <label><input type="radio" name="Question{{ $q.ID }}" value="3"> {{ $q.Option03 }}</label>
+                                        </div>
+                                        {{ end }}
+                                        {{ if $q.Option04 }}
+                                        <div class="radio w-25">
+                                            <label><input type="radio" name="Question{{ $q.ID }}" value="4"> {{ $q.Option04 }}</label>
+                                        </div>
+                                        {{ end }}
+                                        {{ if $q.Option05 }}
+                                        <div class="radio w-25">
+                                            <label><input type="radio" name="Question{{ $q.ID }}" value="5"> {{ $q.Option05 }}</label>
+                                        </div>
+                                        {{ end }}
+                                        {{ if $q.Option06 }}
+                                        <div class="radio w-25">
+                                            <label><input type="radio" name="Question{{ $q.ID }}" value="6"> {{ $q.Option06 }}</label>
+                                        </div>
+                                        {{ end }}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option1" autocomplete="off" type="radio" ><label>Cykel</label></p>
 
-                                <p><input name="options" id="option2" autocomplete="off" type="radio" ><label>Kollektivtrafik</label></p>
-
-                                <p><input name="options" id="option3" autocomplete="off" type="radio" ><label>Bil</label></p>
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" disabled><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            <div class="row d-flex justify-content-between">
+                                <button type="button" class="btn btn-primary" {{if eq $q.ID 1}}disabled{{else}}onclick="changeCard({{$q.ID}},'prev')"{{end}}><i class="fa fa-arrow-left" aria-hidden="true"></i>
                                     Prev
-                      </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(2)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                      </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--question 2-->
-                    <div class="calc-card" id="2" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>2. Försöker du byta ut nötkött mot någon annan protein en gång i veckan? </h4>
-                                
-                                <p><input name="options" id="option4" autocomplete="off" type="radio"> Kyckling</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Fisk</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Vegetariskt/ Veganskt</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Nej</p>
-                                
+                                </button>
+                                {{if eq $q.ID 10}}
+                                <button type="submit" class="btn btn-primary" onclick="changeCard({{$q.ID}}, 'next')">Submit <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                                {{else}}
+                                <button type="button" class="btn btn-primary" onclick="changeCard({{$q.ID}}, 'next')">Next <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                                {{end}}
                             </div>
                         </div>
-
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(1)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    Prev
-                      </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(3)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                      </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--question 3-->
-                    <div class="calc-card" id="3" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>3. Stänger du av dina elektriska apparater (ex. TV, dator) istället för att ha dem i viloläge?
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Ja</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Nej</p>
-                            
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(2)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Prev
-                              </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(4)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                              </button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!--question 4-->
-                    <div class="calc-card" id="4" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>4. Vilken temperatur har du i din bostad? </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> kallare än 22°C</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> 22 °C</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> varmare än 22 °C</p>
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(3)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    Prev
-                          </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(5)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--question 5-->
-                    <div class="calc-card" id="5" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>5. Använder du lock på kastrullen när du kokar vatten? </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Ja</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Nej</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Använder vattenkokare</p>
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(4)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Prev
-                          </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(6)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--question 6-->
-                    <div class="calc-card" id="6" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>6. Hur ofta slänger du mat i onödan? </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Aldrig</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> 1 gång i månaden</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> 1 gång i veckan</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Mer än 2 gånger i veckan</p>
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(5)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Prev
-                          </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(7)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--question 7-->
-                    <div class="calc-card" id="7" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>7. Vart slänger du ditt matavfall? </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Hushållssoporna</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Matavfallssortering</p>
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(6)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Prev
-                          </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(8)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--question 8-->
-                    <div class="calc-card" id="8" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>8. Kör du enbart tvättmaskinen om du kan fylla hela? </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Ja</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Nej</p>
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(7)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Prev
-                          </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(9)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--question 9-->
-                    <div class="calc-card" id="9" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>9. Stänger du av vattenkranen när du borstar tänderna? </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Ja</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Nej</p>
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(8)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Prev
-                          </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(10)">Next<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--question 10-->
-                    <div class="calc-card" id="10" style="display: none;">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>10. Samlar du in dagvatten och återanvänder? </h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Ja</p>
-
-                                <p><input name="options" id="option2" autocomplete="off" type="radio"> Nej</p>
-                                
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" onclick="changeCard(9)"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Prev
-                          </button>
-                            </div>
-
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary" onclick="changeCard(11)">Submit<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                        {{ end }}
+                    </form>
                     <div class="calc-card" id="11" style="display: none;">
                         <h2 style="text-align: center; color: white;">Your Score!</h2>
-                            <h4 style="color: white;"> 5/10</h4>
+                        <h4 style="color: white;"> 5/10</h4>
 
                         <h2 style="text-align: center; color: white;">Recomendations</h2>
-                        <p style="color: white;">Enbart 1 % av jordens vatten är tillgängligt för oss människor som dricksvatten eller till lantbruk. Genom att samla in dagvatten kan du använda detta för att vattna blommor eller andra grödor m.m. Ett bra sätt är att använda en vanlig blå tunna vid hängrännorna, denna klarar cirka 200 l vatten.</p>
+                        <p style="color: white;">test</p>
                         <p style="color: white;">För mer information <a target="_blank" style="color: blue;" href="http://miva.se/vattenochavlopp/dricksvatten/vattenmataren/tipsomdinvattenforbrukning.4.1fc3f8f913afc0821ee596.html">Klicka här!</a>(Öppnas i ny flik!)</p>
                     </div>
 
@@ -367,4 +138,4 @@
         </div>
 </section>
 
-{{template "pilot" .}} {{end}}
+{{end}}

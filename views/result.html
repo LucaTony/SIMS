@@ -1,0 +1,37 @@
+{{template "head2" .}}
+
+    <section>
+        <div class="container">
+
+            {{ if .ResultSend }}
+            {{ $s := .ResultSend }}
+            <div class="card">
+                <h4 class="card-header">Here are your Calculator Results</h4>
+                <div class="card-body">
+                    <h4 class="card-title">Your score is (100% is best): </h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{$s.Total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$s.Total}} %</div>
+                    </div>
+                    <h4 class="card-title">Swedish Law prescribes:</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">20 %</div>
+                    </div>
+                    <h4 class="card-title">2020 Goal is: </h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">30 %</div>
+                    </div>
+                    <h4>Att tänka pa:</h4>
+                    <!------------>
+                    {{ range $r := .SavedRecomm}}
+                    <h4 class="card-title">Question X</h4>
+                    <p class="card-text">{{$r}}</p>
+                    <!------------>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+
+        </div>
+    </section>
+
+{{template "footer" .}}
