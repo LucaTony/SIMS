@@ -3,7 +3,9 @@
  */
 body {
     background-color: #DCEDC8;
+    font-family: 'Raleway', sans-serif;
 }
+
 .bg-primary {
 background-color: #DCEDC8 !important; }
 
@@ -11,7 +13,8 @@ hr {
 border-color: #33691E; }
 
 section {
-padding: 70px 0; }
+padding: 40px 0; }
+
 .temp{
     max-width: 80%;
     max-height: 80%;
@@ -46,6 +49,11 @@ padding: 70px 0; }
 .fun-fact{
     border-color: #6CA357;
 }
+
+#video{
+    margin-top: 90px;
+}
+
 .position-sticky{
     position: fixed;
     top: 14%;
@@ -170,38 +178,38 @@ img[usemap] {
 
 .carousel-control-prev,
 .carousel-control-next {
-  color: green;
+    color: green;
 }
 
 .carousel-control-prev:focus,
 .carousel-control-prev:hover,
 .carousel-control-next:focus,
 .carousel-control-next:hover {
-  color: black;
+    color: black;
 }
 
 #p.cf_controls {
     text-align:center;
-  }
-  #cf_controls span.selected{
-      background-color: #0C2C00;
-      color: white;
-  } 
-  #cf_controls span {
+}
+#cf_controls span.selected{
+    background-color: #0C2C00;
+    color: white;
+} 
+#cf_controls span {
     font-size: 24px;
     font-weight: bold;
     padding:0.3em;
     cursor:pointer;
-  }
-  #cf {
+}
+#cf {
     position: relative;
     height: 450px;
     width:800px;
     margin:0 auto 10px;
-  }
-  #cf img {
-      position: absolute;
-      left: 0;
+}
+#cf img {
+    position: absolute;
+    left: 0;
     -webkit-transition: opacity 1.5s ease-in-out;
     -moz-transition: opacity 1.5s ease-in-out;
     -o-transition: opacity 1.5s ease-in-out;
@@ -209,13 +217,13 @@ img[usemap] {
     opacity:0;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
-  }
-  
-  #cf img.opaque {
+}
+
+#cf img.opaque {
     opacity:1;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: alpha(opacity=1);
-  }
+}
 @media (max-width: 1200px){
     #cf{
         max-width: 100%;

@@ -8,9 +8,6 @@ html {
   width: 100%;
   height: 100%; }
 
-body {
-  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; }
-
 hr {
   max-width: 50px;
   border-width: 3px;
@@ -26,14 +23,6 @@ a {
   transition: all 0.2s; }
   a:focus, a:hover {
     color: #0c2c00; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
 
 p {
   font-size: 16px;
