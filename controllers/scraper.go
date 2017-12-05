@@ -33,7 +33,8 @@ func (t *Scraper) ScraperGet() {
     if updated {
         fmt.Println("updated..")
         t.Ctx.Data["Urls"] = updated_urls
-        updated = false
+        updated_urls = updated_urls[:0] //Flush
+        updated = false // Flush
     }
 
     t.Ctx.Template = "scraper"
@@ -47,6 +48,10 @@ func CheckDue (existing string, recent string, updated time.Time) bool {
     var updateInterval time.Duration = 24*time.Hour
     var due bool
 
+    // Check if entry is empty
+    if existing == "" {
+        return true
+    }
     //Check if entry is identical
     if existing == recent {
         return false
@@ -68,22 +73,37 @@ func CheckDue (existing string, recent string, updated time.Time) bool {
 
 //ScraperPost is the Post function for the scaper
 func (t *Scraper) ScraperPost() {
-    updated = true
-    searches := []*models.Search{} // Create empty slice of struct pointers.
-    //todo := &models.Todo{}
     fmt.Println("ScraperPost")
-    t.Ctx.DB.Order("id").Find(&searches)
+    updated = true // Flag for Get
+
+    searches := []*models.Search{} // Create empty slice of struct pointers.
+
+    //scraperID := t.Ctx.Params["id"] // Id which should be updated
+    req := t.Ctx.Request()
+    _ = req.ParseForm()
+
+    //scraperID := req.ParseForm["scraperID"]
+    scraperID := req.PostForm.Get("scraperID")
+
+    if scraperID == "all" {
+        t.Ctx.DB.Order("id").Find(&searches)
+    } else {
+        ID, _ := strconv.Atoi(scraperID)
+        t.Ctx.DB.Order("id").First(&searches, ID)
+    }
 
     swe, err := time.LoadLocation("Europe/Stockholm")
     if err != nil {
         fmt.Println("err: ", err.Error())
     }
 
-    //updated_urls = append(updated_urls , "url1")
+
     for i := range searches {
-        if searches[i].Dom != "" {
+        if (searches[i].Dom != "") && (searches[i].DomTitle != "") {
+            fmt.Println("Proccessing id: ", searches[i].ID)
             resp, err := soup.Get(searches[i].URL)
             if err != nil {
+                fmt.Println("Couldn't get the URL")
                 os.Exit(1)
             }
             doc := soup.HTMLParse(resp)
@@ -92,7 +112,7 @@ func (t *Scraper) ScraperPost() {
             find := strings.Split(searches[i].Dom, ".")
             find0 := strings.Split(find[0],",") // div class intro
             find1 := strings.Split(find[1],"|") // p 3
-            tagIndex, err := strconv.Atoi(find1[1])
+            tagIndex, err := strconv.Atoi(find1[1]) // 3
             sitesBody := doc.Find(find0...).FindAll(find1[0])[tagIndex]
 
             //Get the Title text
@@ -107,15 +127,17 @@ func (t *Scraper) ScraperPost() {
             //Check if update is due and update the DB entry
             if CheckDue(searches[i].Body, sitesBody.Text(), searches[i].UpdatedAt.In(swe)) {
                 fmt.Println("Updating: ", searches[i].URL)
-                t.Ctx.DB.Model(&searches).Where("id="+ strconv.Itoa(i+1)).Updates(map[string]interface{}{
+                //TODO: Don't misuse i as id !!
+                //t.Ctx.DB.Order("id").First(&searches, ID)
+                t.Ctx.DB.Model(&searches).Where("id="+ strconv.Itoa(searches[i].ID)).Updates(map[string]interface{}{
                     "body" : sitesBody.Text(),
                     "title" : sitesTitle.Text(),
                 })
-                //fmt.Println(sitesBody.Text())
-                //fmt.Println(sitesBody.Text())
-                updated_urls = append(updated_urls , searches[i].URL)
+                fmt.Println("New Title: ", sitesTitle.Text())
+                fmt.Println("New Body: ", sitesBody.Text())
+                updated_urls = append(updated_urls , searches[i].URL) // Show updated urls on GET
             } else {
-                fmt.Println("Not Updating: ", searches[i].URL)
+                fmt.Println("Not Updated: ", searches[i].URL)
             }
         }
     }

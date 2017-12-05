@@ -129,7 +129,7 @@ func (c Search) CalcGet(){
     }
 
     myScoreSet = false //Flush
-    myRecomm = myRecomm[:0]
+    myRecomm = myRecomm[:0] //Flush
 
 }
 func (c Search) FactGet() {

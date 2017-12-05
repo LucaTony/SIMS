@@ -6,11 +6,14 @@
 
     </head>
     <body>
-        Click the button to update the Database
-        <!--<button type="button" class="btn btn-primary btn-lg">Update</button>-->
+        <h1>Welcome to the Scraper</h1>
+        <p>Enter the id which should be updated or <b>all</b> if you want to update the whole DB</p>
         <form action="/scraper" method="post">
+            <input type="text" name="scraperID">
             <input class="btn btn-primary" type="submit" value="Update" />
         </form>
+
+
         {{ if .Urls }} The updated urls are:
         {{ range $v := .Urls }}
         <p>
