@@ -28,7 +28,12 @@ type Calculator struct {
     Type       string      `schema:"type"`
     Amount     int         `schema: "amount"`
     Question   string      `schema:"quest"`
-    Recomm     string       `schema:"-"`
+    Recomm     string     `schema:"-"`
+    Recomm1     string     `schema:"-"`
+    Recomm2     string     `schema:"-"`
+    Recomm3     string     `schema:"-"`
+    Recomm4     string     `schema:"-"`
+    Recomm5     string     `schema:"-"`
     Option01    string      `schema:"-"`
     Points01    float32     `schema:"-"`
     Option02    string      `schema:"-"`
