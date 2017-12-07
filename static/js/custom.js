@@ -74,7 +74,7 @@ $(document).ready(function () {
 /*after ten seconds hide recent fact and show new fact. */
 function changeFact() {
     var facts = document.getElementsByClassName("funFact");
-    var one = document.getElementById("fact" + 1);
+    var one = document.getElementById("fact" + getRand());
     //hides all generated facts and shows one specific.
     for (var i = 0; i < facts.length; i++) {
         facts[i].style.display = "none";
@@ -84,16 +84,19 @@ function changeFact() {
     timer();
 
 }
-
+function getRand(){
+    rand = Math.floor(Math.random() * 25) + 1;
+    console.log(rand);
+    return rand;
+}
 //The time each fact will be showed
 function timer() {
     setInterval(function () {
-        for(var i = 1; i<6; i++){
+        for(var i = 1; i<26; i++){
         var first = document.getElementById("fact" + i);
         first.style.display = "none";
         }
-        rand = Math.floor(Math.random() * 5) + 1;
-        var one = document.getElementById("fact" + rand);
+        var one = document.getElementById("fact" + getRand());
         one.style.display = "block";
 
     }, 15000);
