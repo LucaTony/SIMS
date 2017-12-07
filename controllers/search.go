@@ -108,6 +108,7 @@ func (t *Search) Home() {
 }
 
 //TODO: Refactor and understand
+<<<<<<< HEAD
 func (c Search) CalcGet() {
 	questions := []*models.Calculator{}
 	c.Ctx.DB.Order("id").Find(&questions)
@@ -140,6 +141,25 @@ func (c Search) CalcGet() {
 
 	myScoreSet = false      //Flush
 	myRecomm = myRecomm[:0] //Flush
+=======
+func (c Search) CalcGet(){
+    questions := []*models.Calculator{}
+    c.Ctx.DB.Order("id").Find(&questions)
+    //fmt.Println(questions)
+
+    //Get the question from the db.
+    //Get the responding answer options to each question.
+    c.Ctx.Data["CalcSend"] = questions
+    //c.Ctx.Data["add"] = add(3,4)
+    if (myScoreSet) {
+        c.Ctx.Data["CalcResult"] = myScore
+        c.Ctx.Data["CalcRecomm"] = myRecomm
+        c.Ctx.Data["ResultLinkSend"] = myResultID
+    }
+
+    myScoreSet = false //Flush
+    myRecomm = myRecomm[:0] //Flush
+>>>>>>> dfd75cfa71185a4f227dc93d9c9352a304562b4a
 
 }
 func (c Search) FactGet() {
