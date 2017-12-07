@@ -36,7 +36,7 @@
                             <input id="resultlink" class="w-50" value="http://localhost:8888/result/{{.ResultLinkSend}}">
 
                             <!-- Trigger -->
-                            <button class="btn btn-secondary" id="copy-button" data-clipboard-target="#resultlink">
+                            <button class="btn btn-secondary" id="copy-button" data-clipboard-target="#resultlink" style="cursor: pointer;">
                                 <img src="static/img/clippy.svg" width="13" alt="Copy to clipboard">
                             </button>
 
@@ -73,42 +73,86 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h4 class="d-flex justify-content-center mt-3">{{ $q.Question }}</h4>
-                                    <div class="d-flex justify-content-center align-items-center mt-3" style="flex-direction: column">
+                                    <div id="accordion{{$q.ID}}" role="tablist">
+
+                                        <!--https://codepen.io/shub1427/pen/ZpayrV-->
                                         {{ if $q.Option01 }}
-                                        <div class="radio w-25">
-                                            <label><input type="radio" name="Question{{ $q.ID }}" value="1"> {{ $q.Option01 }}</label>
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="heading1">
+                                                <h5 class="mb-0">
+                                                    <label for="r_{{$q.ID}}_1">
+                                                        <input id="r_{{$q.ID}}_1" type="radio" name="Question{{ $q.ID }}" value="1">
+                                                        {{$q.Option01}}
+                                                        <a class="collapsed" data-toggle="collapse" href="#collapse{{$q.ID}}_1" aria-expanded="false" aria-controls="#collapse{{$q.ID}}_1">
+                                                        </a>
+                                                    </label>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse{{$q.ID}}_1" class="collapse" role="tabpanel" aria-labelledby="heading1" data-parent="#accordion{{$q.ID}}">
+                                                <div class="card-body">{{$q.Recomm1}}</div>
+                                            </div>
                                         </div>
                                         {{ end }}
+
                                         {{ if $q.Option02 }}
-                                        <div class="radio w-25">
-                                            <label><input type="radio" name="Question{{ $q.ID }}" value="2"> {{ $q.Option02 }}</label>
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="heading2">
+                                                <h5 class="mb-0">
+                                                    <label for="r_{{$q.ID}}_2">
+                                                        <input id="r_{{$q.ID}}_2" type="radio" name="Question{{ $q.ID }}" value="2">
+                                                        {{$q.Option02}}
+                                                        <a class="collapsed" data-toggle="collapse" href="#collapse{{$q.ID}}_2" aria-expanded="false" aria-controls="#collapse{{$q.ID}}_2">
+                                                        </a>
+                                                    </label>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse{{$q.ID}}_2" class="collapse" role="tabpanel" aria-labelledby="heading2" data-parent="#accordion{{$q.ID}}">
+                                                <div class="card-body">{{$q.Recomm2}}</div>
+                                            </div>
                                         </div>
                                         {{ end }}
+
                                         {{ if $q.Option03 }}
-                                        <div class="radio w-25">
-                                            <label><input type="radio" name="Question{{ $q.ID }}" value="3"> {{ $q.Option03 }}</label>
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="heading3">
+                                                <h5 class="mb-0">
+                                                    <label for="r_{{$q.ID}}_3">
+                                                        <input id="r_{{$q.ID}}_3" type="radio" name="Question{{ $q.ID }}" value="3">
+                                                        {{$q.Option03}}
+                                                        <a class="collapsed" data-toggle="collapse" href="#collapse{{$q.ID}}_3" aria-expanded="false" aria-controls="#collapse{{$q.ID}}_3">
+                                                        </a>
+                                                    </label>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse{{$q.ID}}_3" class="collapse" role="tabpanel" aria-labelledby="heading3" data-parent="#accordion{{$q.ID}}">
+                                                <div class="card-body">{{$q.Recomm3}}</div>
+                                            </div>
                                         </div>
                                         {{ end }}
+
                                         {{ if $q.Option04 }}
-                                        <div class="radio w-25">
-                                            <label><input type="radio" name="Question{{ $q.ID }}" value="4"> {{ $q.Option04 }}</label>
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="heading4">
+                                                <h5 class="mb-0">
+                                                    <label for="r_{{$q.ID}}_4">
+                                                        <input id="r_{{$q.ID}}_4" type="radio" name="Question{{ $q.ID }}" value="4">
+                                                        {{$q.Option04}}
+                                                        <a class="collapsed" data-toggle="collapse" href="#collapse{{$q.ID}}_4" aria-expanded="false" aria-controls="#collapse{{$q.ID}}_4">
+                                                        </a>
+                                                    </label>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse{{$q.ID}}_4" class="collapse" role="tabpanel" aria-labelledby="heading4" data-parent="#accordion{{$q.ID}}">
+                                                <div class="card-body">{{$q.Recomm4}}</div>
+                                            </div>
                                         </div>
                                         {{ end }}
-                                        {{ if $q.Option05 }}
-                                        <div class="radio w-25">
-                                            <label><input type="radio" name="Question{{ $q.ID }}" value="5"> {{ $q.Option05 }}</label>
-                                        </div>
-                                        {{ end }}
-                                        {{ if $q.Option06 }}
-                                        <div class="radio w-25">
-                                            <label><input type="radio" name="Question{{ $q.ID }}" value="6"> {{ $q.Option06 }}</label>
-                                        </div>
-                                        {{ end }}
+
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row d-flex justify-content-between">
+                            <div class="row d-flex justify-content-between mt-3">
                                 <button type="button" class="btn btn-primary" {{if eq $q.ID 1}}disabled{{else}}onclick="changeCard({{$q.ID}},'prev')"{{end}}><i class="fa fa-arrow-left" aria-hidden="true"></i>
                                     Prev
                                 </button>
@@ -123,16 +167,6 @@
                         </div>
                         {{ end }}
                     </form>
-                    <div class="calc-card" id="11" style="display: none;">
-                        <h2 style="text-align: center; color: white;">Your Score!</h2>
-                        <h4 style="color: white;"> 5/10</h4>
-
-                        <h2 style="text-align: center; color: white;">Recomendations</h2>
-                        <p style="color: white;">test</p>
-                        <p style="color: white;">För mer information <a target="_blank" style="color: blue;" href="http://miva.se/vattenochavlopp/dricksvatten/vattenmataren/tipsomdinvattenforbrukning.4.1fc3f8f913afc0821ee596.html">Klicka här!</a>(Öppnas i ny flik!)</p>
-                    </div>
-
-
                 </div>
             </div>
         </div>

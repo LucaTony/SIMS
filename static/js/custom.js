@@ -1,3 +1,11 @@
+$(document).ready(function () {
+$("[id^='r_']").on('click', function(){
+  $(this).parent().find('a').trigger('click')
+})
+
+});
+
+
 (function(){
     new Clipboard('#copy-button');
 })();

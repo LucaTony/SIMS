@@ -36,7 +36,7 @@ var myScore float32             //Score in percentage
 var myScoreSet bool = false     //True if test was taken
 var myRecomm = []string{}       //Show recomm on startpage
 var myResultID int              //id, primary key for db for unique link
-var myResultRecomm string       //Store Recomm for for future
+var myResultRecomm string       //Store Recomm for future access
 
 func getField(c *models.Calculator, field string) float32 {
     r := reflect.ValueOf(c)
