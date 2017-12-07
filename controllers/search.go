@@ -102,25 +102,10 @@ func (c Search) CalcGet(){
     questions := []*models.Calculator{}
     c.Ctx.DB.Order("id").Find(&questions)
     //fmt.Println(questions)
-    mySend := []CalcSend {}
 
     //Get the question from the db.
     //Get the responding answer options to each question.
-    for q := range questions {
-        tempSend := CalcSend{
-            ID:         questions[q].ID,
-            Question:   questions[q].Question,
-            Option01:   questions[q].Option01,
-            Option02:   questions[q].Option02,
-            Option03:   questions[q].Option03,
-            Option04:   questions[q].Option04,
-            Option05:   questions[q].Option05,
-            Option06:   questions[q].Option06,
-        }
-        mySend = append(mySend, tempSend)
-        //fmt.Println(mySend)
-    }
-    c.Ctx.Data["CalcSend"] = mySend
+    c.Ctx.Data["CalcSend"] = questions
     //c.Ctx.Data["add"] = add(3,4)
     if (myScoreSet) {
         c.Ctx.Data["CalcResult"] = myScore
