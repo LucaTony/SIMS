@@ -1,7 +1,7 @@
 {{define "sticky"}}
 
 <div class="position-sticky rounded" id="sticky">
-        <div class="card" style="background-color: #446679;">
+        <div class="card" style="background-color: rgb(112,127,135);">
                 {{ range $f := .Fact}}
                 <div class="card-body funFact" id="fact{{$f.ID}}">
                         <img class="card-img-top" src="static/img/sticky/{{$f.Category}}.png" alt="Card image cap">
