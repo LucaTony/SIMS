@@ -1,7 +1,30 @@
+/*Ajax live search*/
+function showResult(str) {
+    if (str.length==0) {
+        document.getElementById("liveresults").innerHTML="";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    } else {  // code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+            document.getElementById("liveresults").innerHTML=this.responseText;
+        }
+    }
+    xmlhttp.open("GET","ajax/"+str,true);
+    xmlhttp.send();
+}
+
+
+/*Quiz Radio with Accordion compatibility*/
 $(document).ready(function () {
-$("[id^='r_']").on('click', function(){
-  $(this).parent().find('a').trigger('click')
-})
+    $("[id^='r_']").on('click', function(){
+        $(this).parent().find('a').trigger('click')
+    })
 
 });
 
@@ -93,8 +116,8 @@ function getRand(){
 function timer() {
     setInterval(function () {
         for(var i = 1; i<26; i++){
-        var first = document.getElementById("fact" + i);
-        first.style.display = "none";
+            var first = document.getElementById("fact" + i);
+            first.style.display = "none";
         }
         var one = document.getElementById("fact" + getRand());
         one.style.display = "block";

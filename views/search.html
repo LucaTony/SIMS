@@ -8,36 +8,16 @@
                 <h2 class="section-heading ">Sök</h2>
                 <hr class="primary">
 
-
-                <form action="/search" method="post">
+                <form>
                     <div class="input-group mb-3">
-                        <input type="search" class="form-control" name="searchinput" placeholder="Search...">
+                        <input type="text" class="form-control" name="searchinput" autocomplete="off" placeholder="Search..." onkeyup="showResult(this.value)">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <button class="btn btn-primary" disabled><i class="fa fa-search" aria-hidden="true"></i></button>
                         </span>
                     </div>
-                </form>
-                {{ range $v := .Data}}
-                <div class="card text-left mt-2">
-                    <div class="card-header">
-                        {{$v.Title}}
-                    </div>
-                    <div class="card-body text-left">
-                        {{if $v.Found}}
-                        <p class="card-text">
-                            <!--<h4>Found: {{$v.Score}} times</h4>-->
-                            {{$v.Body}}
-                        </p>
-                        <a target="_blank" href="{{$v.Url}}" class="btn btn-primary">Go to Website</a>
-                        {{else}}
-                        <p class="card-text">
-                            Din sökning - <strong>{{$v.Body}}</strong> - matchade inte något dokument
-                        </p>
-
-                        {{end}}
-                    </div>
-                </div>
-                {{end}}
+               </form>
+<div id="liveresults">
+</div>
             </div>
 </section>
 

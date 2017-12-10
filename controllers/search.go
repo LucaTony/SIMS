@@ -7,6 +7,7 @@ import (
     _ "reflect"
     "sort"
     "strings"
+    "time"
 
     "github.com/LucaTony/SIMS/models"
     "github.com/gernest/utron/controller"
@@ -53,58 +54,19 @@ func (t *Search) HousePost() {
 //BUG(r): The searchinput should remain in the field when reloading
 func (t *Search) Home() {
     fmt.Println("Home")
-    searches := []*models.Search{} // Create empty slice of struct pointers.
-
-    t.Ctx.DB.Order("created_at desc").Find(&searches)
-
-    var mySend = []SearchSend{}
-
-    if mySearch != "" {
-        words := strings.Fields(mySearch)
-        for i := range searches {
-            score := 0
-            for w := range words {
-                tempScore := strings.Count(strings.ToLower(searches[i].Body), strings.ToLower(words[w]))
-                if tempScore != 0 {
-                    score += tempScore // add the amount one searched word occurs in a result
-                }
-            }
-            if score > 0 {
-                tempSend := SearchSend{ //TODO: Direct
-                    Title: searches[i].Title,
-                    Body:  searches[i].Body,
-                    Url:   searches[i].URL,
-                    Score: score,
-                    Found: true,
-                }
-                mySend = append(mySend, tempSend)
-                //fmt.Println("added!!")
-            }
-        }
-        if len(mySend) == 0 {
-            tempSend := SearchSend{
-                Title: "Error",
-                Body:  mySearch,
-                Found: false,
-            }
-            mySend = append(mySend, tempSend)
-        }
-
-    }
-
-    sort.Sort(ByScore(mySend))
-    t.Ctx.Data["Data"] = mySend
-    mySearch = "" // TODO: don't remove the searchfield text
-    //for _, v := range searches {fmt.Printf("%v",v.Body)} // Iterate throuh objects, only value (since the _)
 
     //cal := &Calc{}
     //var cal *Calc
     //cal.CalcGet()
     t.CalcGet()
+    fmt.Println("CalcGet: Done")
     t.FactGet()
+    fmt.Println("FactGet: Done")
 
     t.Ctx.Template = "index"
+    fmt.Println("Template: Done")
     t.HTML(http.StatusOK)
+    fmt.Println("Status: Done")
 }
 
 //TODO: Refactor and understand
@@ -134,12 +96,95 @@ func (c Search) FactGet() {
 
 }
 
+func (t *Search) AjaxSearch(){
+    start := time.Now()
+    mySearch := t.Ctx.Params["aj"]
+    if len(mySearch) >= 3 {
+        searches := []*models.Search{} // Create empty slice of struct pointers.
+        t.Ctx.DB.Find(&searches)
+
+        fmt.Println("AJAX: ", mySearch)
+        //t.Ctx.Data["AjaxData"] = mySearch
+        //t.Ctx.Commit()
+
+        var mySend = []SearchSend{}
+
+        if mySearch != "" {
+            words := strings.Fields(mySearch)
+            for i := range searches {
+                score := 0
+                for w := range words {
+                    tempScore := strings.Count(strings.ToLower(searches[i].Body), strings.ToLower(words[w]))
+                    if tempScore != 0 {
+                        score += tempScore // add the amount one searched word occurs in a result
+                    }
+                }
+                if score > 0 {
+                    tempSend := SearchSend{ //TODO: Direct
+                        Title: searches[i].Title,
+                        Body:  searches[i].Body,
+                        Url:   searches[i].URL,
+                        Score: score,
+                        Found: true,
+                    }
+                    mySend = append(mySend, tempSend)
+                    //fmt.Println("added!!")
+                }
+            }
+            if len(mySend) == 0 {
+                tempSend := SearchSend{
+                    Title: "Error",
+                    Body:  mySearch,
+                    Found: false,
+                }
+                mySend = append(mySend, tempSend)
+            }
+
+        }
+
+        sort.Sort(ByScore(mySend))
+        //t.Ctx.Data["Data"] = mySend
+        //TODO: clean up this mess, especially direct without temp
+        var myResults string
+        for v := range mySend {
+            myResults += `
+            <div class="card text-left mt-2">
+            <div class="card-header">
+            `+ mySend[v].Title + `
+            </div>
+            <div class="card-body text-left">
+            `
+            if mySend[v].Found {
+                myResults += `<p class="card-text">
+                `+mySend[v].Body+ `
+                </p><a target="_blank" href="` +mySend[v].Url+ `" class="btn btn-primary">Go to Website</a>`
+            } else {
+                myResults += `<p class="card-text">Din sökning - <strong>`+mySend[v].Body+`</strong> - matchade inte något dokument</p>`
+            }
+            myResults += "</div></div>"
+        }
+        fmt.Fprintf(t.Ctx.Response(), myResults) //This responses like php's echo
+        mySearch = "" // TODO: don't remove the searchfield text
+    }
+    //else {
+        //fmt.Println("Not searching, too short")
+    //}
+        elapsed := time.Since(start)
+        fmt.Println("It took: ", elapsed)
+}
+
 //NewSearch returns a new search list controller
 func NewSearch() controller.Controller {
     return &Search{
         Routes: []string{
             "get;/;Home",
             "post;/search;HousePost",
+            "get;/ajax/{aj};AjaxSearch",
         },
     }
 }
+
+
+
+
+
