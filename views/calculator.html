@@ -142,13 +142,13 @@
 
                             <div class="row d-flex justify-content-between mt-3">
                                 <button type="button" class="btn btn-primary" {{if eq $q.ID 1}}disabled{{else}}onclick="changeCard({{$q.ID}},'prev')"{{end}}><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    Prev
+                                    Föregående
                                 </button>
                                 {{if eq $q.ID 10}}
                                 <button type="submit" class="btn btn-primary" onclick="changeCard({{$q.ID}}, 'next')">Submit <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 </button>
                                 {{else}}
-                                <button type="button" class="btn btn-primary" onclick="changeCard({{$q.ID}}, 'next')">Next <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <button type="button" class="btn btn-primary" onclick="changeCard({{$q.ID}}, 'next')">Nästa <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 </button>
                                 {{end}}
                             </div>
