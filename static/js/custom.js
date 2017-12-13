@@ -58,7 +58,7 @@ function changeCard(quest, np) {
             childpro.innerText = quest + "/" + maxquest; 
             childpro.style.width = w + "%";
         }
-    } else  alert("Please choose an answer");
+    } else  alert("Vänligen välj alternativ");
 
 }    
 
