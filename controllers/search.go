@@ -133,7 +133,7 @@ func (t *Search) AjaxSearch(){
             }
             if len(mySend) == 0 {
                 tempSend := SearchSend{
-                    Title: "Error",
+                    Title: "Inga träffar",
                     Body:  mySearch,
                     Found: false,
                 }
@@ -157,7 +157,7 @@ func (t *Search) AjaxSearch(){
             if mySend[v].Found {
                 myResults += `<p class="card-text">
                 `+mySend[v].Body+ `
-                </p><a target="_blank" href="` +mySend[v].Url+ `" class="btn btn-primary">Go to Website</a>`
+                </p><a target="_blank" href="` +mySend[v].Url+ `" class="btn btn-primary">Gå till hemsida</a>`
             } else {
                 myResults += `<p class="card-text">Din sökning - <strong>`+mySend[v].Body+`</strong> - matchade inte något dokument</p>`
             }
