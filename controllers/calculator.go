@@ -46,6 +46,8 @@ func getField(c *models.Calculator, field string) float32 {
 
 //CalcPost function to get questions and options from db
 // and then display it on the website.
+//BUG(l): recommendations are added multiple times
+//result has double entries: problably [] / id problem
 func (c *Calc) CalcPost() {
     fmt.Println("CalcPost")
     req := c.Ctx.Request()
@@ -68,6 +70,7 @@ func (c *Calc) CalcPost() {
             recommInd++
             myResultRecomm += strconv.Itoa(myIndex+1)
             myResultRecomm += (" ") //Delimiter hack
+            //fmt.Println("added myResultRecomm: ", myIndex+1)
         }
         myScore += tempScore
         myIndex++
@@ -78,6 +81,7 @@ func (c *Calc) CalcPost() {
     fmt.Println("Your score is : ", myScore)
 
     c.ResultSave()
+    myResultRecomm = "" //Flush, fixes recomm bug?
     c.Ctx.Redirect("/#calculator", http.StatusFound)
 }
 
