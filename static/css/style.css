@@ -52,6 +52,14 @@ a:hover, a:active, a:focus, input {
 .fun-fact{
     border-color: #6CA357;
 }
+    
+/*refactor this*/
+.funFact{
+    padding: 0.5rem;
+}
+.funFact .card-text{
+    font-size: 13px;
+}
 
 #video{
     margin-top: 90px;
@@ -60,7 +68,7 @@ a:hover, a:active, a:focus, input {
 .position-sticky{
     position: fixed;
     top: 14%;
-    width: 15%;
+    width: 12%;
     color: white;
     z-index: 5;
     float: left;

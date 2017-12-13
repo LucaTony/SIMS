@@ -13,6 +13,7 @@
                         <h4 class="card-header">Ditt resultat</h4>
                         <div class="card-body">
                             <h4 class="card-title">Slutresultat: </h4>
+                            <h6 class="text-center">ECO-Meter (100% är bäst)</h6>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: {{$s}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$s}} %</div>
                             </div>
@@ -23,7 +24,7 @@
                             <!------------>
                             {{ end }}
                             <!-- Target -->
-                            <h5>Share your result:</h5>
+                            <h5>Dela dina resultat:</h5>
                             <input id="resultlink" class="w-50" value="http://87.239.250.228/result/{{.ResultLinkSend}}">
                             <!-- Trigger -->
                             <button class="btn btn-secondary" id="copy-button" data-clipboard-target="#resultlink" style="cursor: pointer;">

@@ -9,17 +9,21 @@
             <h4 class="card-header">Ditt resultat</h4>
             <div class="card-body">
                 <h4 class="card-title">Slutresultat: </h4>
+                <h6 class="text-center">ECO-Meter (100% är bäst)</h6>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: {{$s.Total}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$s.Total}} %</div>
                 </div>
                 <div class="text-center">
 
                 </div>
+                {{ if .SavedRecomm }}
                 <p><h4>Att tänka på:</h4><p>
                 <!------------>
                 {{ range $r := .SavedRecomm }}
                 <p class="card-text">{{$r}}</p>
                 <!------------>
+                {{ end }} {{else}}
+                <h2 class="text-center mt-3">JÄTTEBRA!! &#129412</h1>
                 {{ end }}
             </div>
         </div>

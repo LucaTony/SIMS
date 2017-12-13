@@ -4,12 +4,12 @@
         <div class="card" style="background-color: rgb(112,127,135);">
                 {{ range $f := .Fact}}
                 <div class="card-body funFact" id="fact{{$f.ID}}">
-                        <img class="card-img-top" src="static/img/sticky/{{$f.Category}}.png" alt="Card image cap">
+                        <a style="cursor: pointer" id="close_fact" class="btn btn-primary float-right" onclick="sticky_close()"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        <img class="card-img-top" align="middle" src="static/img/sticky/{{$f.Category}}.png" alt="Card image cap">
                         <h4 class="card-title" style="text-align: center;">{{$f.Category}}</h4>
                         <hr class="fun-fact">
                         <p class="card-text">{{$f.Fact}}</p>
                         <p><a style="color: blue;" target="_blank" href="{{$f.URL}}">Läs mer här!</a></p>
-                        <a style="cursor: pointer" id="close_fact" class="btn btn-primary" onclick="sticky_close()"><i class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
                 
                 {{end}}
