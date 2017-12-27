@@ -1,59 +1,32 @@
-#utrontodo
+# SIMS Digital Coach
 
-Todo list application using [utron](https://github.com/gernest/utron)
+SIMS is a Digital Coach for a sustainable living style based on [utron](https://github.com/gernest/utron).
 
-This shows how you can get started using the utron web framework.
+To get started take a look at the following Installation chapter.
 
 # Installation
 
-You will need to have a working Go environment
+1. You will need to have a working Go environment
 
 ``` bash
-go get github.com/utronframework/todo
+go get github.com/LucaTony/SIMS
 ```
 
+2. Create the folder config with the config file app.json in it like [this](https://github.com/utronframework/todo/tree/master/config) and edit the connection details to your needs.
 
-To run the applications, move to the root of the package
-```
- cd $GOPATH/github.com/utronframework/todo
-```
 
-You can now edit `config/app.json` to suit your needs. The database is required,
-so you can use a postgresql,mysql or sqlite database.
-
-When you are happy with the configurations then you can run the application by
+3. To run the applications, move to the root of the package
 ```
-todo
+ cd $GOPATH/src/github.com/LucaTony/SIMS
+ go run main.go
 ```
 
-Visit localhost:8080 if you didnt choose another port in the configuration file
-to see your toto-list application
+Visit localhost:8090 or your specific port you chose in the app.json to see the app.
 
 
-## ALternatively with docker-compose
+# Screenshot
+![SIMS app](https://screenshots.firefox.com/fXQSuex5WMMzKRoO/87.239.250.228)
 
-If you have docker and docker-compose. There is a `docker-compose.yml` file that
-will setup everything for you, like postgresql database and also build the app
-for you.
-
-```
-git clone git@github.com:utronframework/todo.git
-
-cd todo
-docker-compose up -d
-```
-
-Visit localhost:8080 if you didnt choose another port in the configuration file
-to see your toto-list application
-
-#Shamless plug
-
-If you find this helpful, please [follow the author](https://github.com/gernest)
-
-# screen shot
-![todo app with utron](screenshot.png)
-
-nd start this project.
 
 # LICENSE
 MIT
