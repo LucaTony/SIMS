@@ -25,7 +25,7 @@ Visit localhost:8090 or your specific port you chose in the app.json to see the 
 
 
 # Screenshot
-![SIMS app](https://screenshots.firefox.com/fXQSuex5WMMzKRoO/87.239.250.228)
+![SIMS app](https://screenshots.firefoxusercontent.com/images/b06a4d0b-c782-4df2-93e9-3b5bf05ae6c8.jpg "SIMS screenshot")
 
 
 # LICENSE
